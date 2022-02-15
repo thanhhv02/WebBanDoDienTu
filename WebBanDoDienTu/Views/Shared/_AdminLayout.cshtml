@@ -970,26 +970,26 @@
                     </div>
                 </li>
                 <li class="nav-item" style="margin-left:20px">
-                    <a  asp-action="Index" asp-controller="Home" class="tip" title="Dashboard :: Đây là màn hình chính." target="_self">Dashboard </a>
+                    <a asp-action="Index" asp-controller="Home" class="tip" title="Dashboard :: Đây là màn hình chính." target="_self">Dashboard </a>
+                </li>
+                <li class="nav-item" style="margin-left:37px">
+                    <a asp-action="Index" asp-controller="Customers" class="tip" title="Users :: Chỉnh sửa người dùng." target="_self">Users </a>
                 </li>
                 <li class="nav-item" style="margin-left:57px">
-                    <a href="#users"  class="tip" title="Users :: Chỉnh sửa người dùng." target="_self">Users </a>
+                    <a asp-action="Index" asp-controller="Products" class="tip" title="Products :: Chỉnh sửa sản phẩm." target="_self">Products </a>
                 </li>
                 <li class="nav-item" style="margin-left:57px">
-                    <a href="#product"  class="tip" title="Products :: Chỉnh sửa sản phẩm." target="_self">Products </a>
-                </li>
-                <li class="nav-item" style="margin-left:57px">
-                    <a href="#category" class="tip" title="Category :: Chỉnh sửa thể loại." target="_self">Category </a>
+                    <a asp-action="Index" asp-controller="Categories" class="tip" title="Category :: Chỉnh sửa thể loại." target="_self">Category </a>
                 </li>
                 @*<li class="nav-item">
-                    <a href="index.php?p=commslist" class="tip" title="Comms :: All of the communication bans (such as chat gags and voice mutes) in the database can be viewed from here." target="_self">Comms </a>
-                </li>
-                <li class="nav-item">
-                    <a href="index.php?p=submit" class="tip" title="Report Player :: You can submit a demo or screenshot of a suspected cheater here. It will then be up for review by one of the admins" target="_self">Report Player </a>
-                </li>
-                <li class="nav-item">
-                    <a href="index.php?p=protest" class="tip" title="Appeal Ban :: Here you can appeal your ban. And prove your case as to why you should be unbanned." target="_self">Appeal Ban </a>
-                </li>*@
+                        <a href="index.php?p=commslist" class="tip" title="Comms :: All of the communication bans (such as chat gags and voice mutes) in the database can be viewed from here." target="_self">Comms </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.php?p=submit" class="tip" title="Report Player :: You can submit a demo or screenshot of a suspected cheater here. It will then be up for review by one of the admins" target="_self">Report Player </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.php?p=protest" class="tip" title="Appeal Ban :: Here you can appeal your ban. And prove your case as to why you should be unbanned." target="_self">Appeal Ban </a>
+                    </li>*@
             </ul>
         </nav>
         <script>
@@ -1064,12 +1064,12 @@
                 </div>
                 @RenderBody()
             </div>
-                
-            </div>
-
 
         </div>
 
+
+    </div>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
 
