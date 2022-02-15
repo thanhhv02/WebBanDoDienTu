@@ -1,0 +1,429 @@
+﻿
+@{
+    ViewData["Title"] = "Admin Page";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+
+
+<div id="content_title">
+    <b>Dashboard</b>
+</div>
+<nav aria-label="breadcrumb">
+    <ol id="breadcrumb" class="breadcrumb bg-light">
+    </ol>
+</nav>
+<div id="content">
+    <script type="text/javascript">$("breadcrumb").setHTML("&raquo; <a href='index.php?p=home'>Home</a> &raquo; <b>Dashboard</b>");</script><div class="row purchace-popup">
+        <div class="col-12">
+            <span class="d-block align-items-center">
+                <h1 id="mcetoc_1ejasr6d50" style="text-align: center;">Welcome to Admin Page</h1>
+                <hr />
+
+            </span>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<div id="front-servers" data-aos="zoom-out" data-aos-delay="50">
+    <div class="row" id="users">
+        <div class="col-lg-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="lead">Users</h4>
+                    <a class="btn btn-block btn-success" style="margin-left:auto;width:200px" asp-action="Index" asp-controller="AddNewRowUsers">Add New Row</a>
+                    <div class="table-responsive" id="server_group" style="overflow: scroll; height: 300px;">
+                        <table class="table table-bordered table-striped table-hover tbl-sm">
+                            <thead>
+                                <tr>
+                                    <th width="2%" height="16" class="listtable_top">ID</th>
+                                    <th width="2%" height="16" class="listtable_top">User Name</th>
+                                    <th width="2%" height="16" class="listtable_top">Name</th>
+                                    <th width="10%" height="16" class="listtable_top" align="center">Address</th>
+                                    <th width="10%" height="16" class="listtable_top">Email</th>
+                                    <th width="10%" height="16" class="listtable_top">Phone</th>
+                                    <th width="10%" height="16" class="listtable_top">Edit</th>
+                                    <th width="10%" height="16" class="listtable_top">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_4" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_4"></td>
+                                    <td height="16" align="center" id="vac_4"></td>
+                                    <td height="16" id="host_4"><i>N/A</i></td>
+                                    <td height="16" id="players_4">N/A</td>
+                                    <td height="16" id="map_4">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditUsers" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveUsers" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_5" aria-expanded="false" aria-controls="collapseExample" onclick=" ">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_5"></td>
+                                    <td height="16" align="center" id="vac_5"></td>
+                                    <td height="16" id="host_5"><i>N/A</i></td>
+                                    <td height="16" id="players_5">N/A</td>
+                                    <td height="16" id="map_5">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditUsers" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveUsers" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_6" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_6"></td>
+                                    <td height="16" align="center" id="vac_6"></td>
+                                    <td height="16" id="host_6"><i>N/A</i></td>
+                                    <td height="16" id="players_6">N/A</td>
+                                    <td height="16" id="map_6">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditUsers" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveUsers" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_7" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_7"></td>
+                                    <td height="16" align="center" id="vac_7"></td>
+                                    <td height="16" id="host_7"><i>N/A</i></td>
+                                    <td height="16" id="players_7">N/A</td>
+                                    <td height="16" id="map_7">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditUsers" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveUsers" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_9" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_9"></td>
+                                    <td height="16" align="center" id="vac_9"></td>
+                                    <td height="16" id="host_9"><i>N/A</i></td>
+                                    <td height="16" id="players_9">N/A</td>
+                                    <td height="16" id="map_9">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditUsers" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveUsers" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_11" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_11"></td>
+                                    <td height="16" align="center" id="vac_11"></td>
+                                    <td height="16" id="host_11"><i>N/A</i></td>
+                                    <td height="16" id="players_11">N/A</td>
+                                    <td height="16" id="map_11">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditUsers" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveUsers" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_12" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_12"></td>
+                                    <td height="16" align="center" id="vac_12"></td>
+                                    <td height="16" id="host_12"><i>N/A</i></td>
+                                    <td height="16" id="players_12">N/A</td>
+                                    <td height="16" id="map_12">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditUsers" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveUsers" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_15" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_15"></td>
+                                    <td height="16" align="center" id="vac_15"></td>
+                                    <td height="16" id="host_15"><i>N/A</i></td>
+                                    <td height="16" id="players_15">N/A</td>
+                                    <td height="16" id="map_15">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditUsers" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveUsers" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_16" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_16"></td>
+                                    <td height="16" align="center" id="vac_16"></td>
+                                    <td height="16" id="host_16"><i>N/A</i></td>
+                                    <td height="16" id="players_16">N/A</td>
+                                    <td height="16" id="map_16">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditUsers" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveUsers" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_17" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_17"></td>
+                                    <td height="16" align="center" id="vac_17"></td>
+                                    <td height="16" id="host_17"><i>N/A</i></td>
+                                    <td height="16" id="players_17">N/A</td>
+                                    <td height="16" id="map_17">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditUsers" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveUsers" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="front-servers" data-aos="zoom-out" data-aos-delay="50">
+    <div class="row" id="product">
+        <div class="col-lg-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="lead">Products</h4>
+                    <a class="btn btn-block btn-success" style="margin-left:auto;width:200px" asp-controller="AddNewRowProducts" asp-action="Index">Add New Row</a>
+                    <div class="table-responsive" id="server_group" style="overflow: scroll; height: 300px;">
+                        <table class="table table-bordered table-striped table-hover tbl-sm">
+                            <thead>
+                                <tr>
+                                    <th width="2%" height="16" class="listtable_top">ID</th>
+                                    <th width="2%" height="16" class="listtable_top">Name</th>
+                                    <th width="2%" height="16" class="listtable_top">Code</th>
+                                    <th width="10%" height="16" class="listtable_top" align="center">Meta Tile</th>
+                                    <th width="10%" height="16" class="listtable_top">Quantity</th>
+                                    <th width="10%" height="16" class="listtable_top">CategoryID</th>
+                                    <th width="10%" height="16" class="listtable_top">Edit</th>
+                                    <th width="10%" height="16" class="listtable_top">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_4" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_4"></td>
+                                    <td height="16" align="center" id="vac_4"></td>
+                                    <td height="16" id="host_4"><i>N/A</i></td>
+                                    <td height="16" id="players_4">N/A</td>
+                                    <td height="16" id="map_4">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditProducts" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveProducts" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_5" aria-expanded="false" aria-controls="collapseExample" onclick=" ">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_5"></td>
+                                    <td height="16" align="center" id="vac_5"></td>
+                                    <td height="16" id="host_5"><i>N/A</i></td>
+                                    <td height="16" id="players_5">N/A</td>
+                                    <td height="16" id="map_5">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditProducts" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveProducts" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_6" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_6"></td>
+                                    <td height="16" align="center" id="vac_6"></td>
+                                    <td height="16" id="host_6"><i>N/A</i></td>
+                                    <td height="16" id="players_6">N/A</td>
+                                    <td height="16" id="map_6">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditProducts" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveProducts" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_7" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_7"></td>
+                                    <td height="16" align="center" id="vac_7"></td>
+                                    <td height="16" id="host_7"><i>N/A</i></td>
+                                    <td height="16" id="players_7">N/A</td>
+                                    <td height="16" id="map_7">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditProducts" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveProducts" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_9" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_9"></td>
+                                    <td height="16" align="center" id="vac_9"></td>
+                                    <td height="16" id="host_9"><i>N/A</i></td>
+                                    <td height="16" id="players_9">N/A</td>
+                                    <td height="16" id="map_9">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditProducts" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveProducts" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_11" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_11"></td>
+                                    <td height="16" align="center" id="vac_11"></td>
+                                    <td height="16" id="host_11"><i>N/A</i></td>
+                                    <td height="16" id="players_11">N/A</td>
+                                    <td height="16" id="map_11">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditProducts" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveProducts" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_12" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_12"></td>
+                                    <td height="16" align="center" id="vac_12"></td>
+                                    <td height="16" id="host_12"><i>N/A</i></td>
+                                    <td height="16" id="players_12">N/A</td>
+                                    <td height="16" id="map_12">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditProducts" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveProducts" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_15" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_15"></td>
+                                    <td height="16" align="center" id="vac_15"></td>
+                                    <td height="16" id="host_15"><i>N/A</i></td>
+                                    <td height="16" id="players_15">N/A</td>
+                                    <td height="16" id="map_15">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditProducts" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveProducts" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_16" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_16"></td>
+                                    <td height="16" align="center" id="vac_16"></td>
+                                    <td height="16" id="host_16"><i>N/A</i></td>
+                                    <td height="16" id="players_16">N/A</td>
+                                    <td height="16" id="map_16">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditProducts" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveProducts" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_17" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_17"></td>
+                                    <td height="16" align="center" id="vac_17"></td>
+                                    <td height="16" id="host_17"><i>N/A</i></td>
+                                    <td height="16" id="players_17">N/A</td>
+                                    <td height="16" id="map_17">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditProducts" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveProducts" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="front-servers" data-aos="zoom-out" data-aos-delay="50">
+    <div class="row" id="category">
+        <div class="col-lg-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="lead">Category</h4>
+                    <a class="btn btn-block btn-success" style="margin-left:auto;width:200px">Add New Row</a>
+                    <div class="table-responsive" id="server_group" style="overflow: scroll; height: 300px;">
+                        <table class="table table-bordered table-striped table-hover tbl-sm">
+                            <thead>
+                                <tr>
+                                    <th width="2%" height="16" class="listtable_top">ID</th>
+                                    <th width="2%" height="16" class="listtable_top">Name</th>
+                                    <th width="2%" height="16" class="listtable_top">ShowOnHome</th>
+                                    <th width="10%" height="16" class="listtable_top" align="center">MetaTile</th>
+                                    <th width="10%" height="16" class="listtable_top">DisplayOrder</th>
+                                    <th width="10%" height="16" class="listtable_top">Status</th>
+                                    <th width="10%" height="16" class="listtable_top">Edit</th>
+                                    <th width="10%" height="16" class="listtable_top">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_4" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_4"></td>
+                                    <td height="16" align="center" id="vac_4"></td>
+                                    <td height="16" id="host_4"><i>N/A</i></td>
+                                    <td height="16" id="players_4">N/A</td>
+                                    <td height="16" id="map_4">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditCategory" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveCategory" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_5" aria-expanded="false" aria-controls="collapseExample" onclick=" ">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_5"></td>
+                                    <td height="16" align="center" id="vac_5"></td>
+                                    <td height="16" id="host_5"><i>N/A</i></td>
+                                    <td height="16" id="players_5">N/A</td>
+                                    <td height="16" id="map_5">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditCategory" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveCategory" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_6" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_6"></td>
+                                    <td height="16" align="center" id="vac_6"></td>
+                                    <td height="16" id="host_6"><i>N/A</i></td>
+                                    <td height="16" id="players_6">N/A</td>
+                                    <td height="16" id="map_6">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditCategory" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveCategory" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_7" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_7"></td>
+                                    <td height="16" align="center" id="vac_7"></td>
+                                    <td height="16" id="host_7"><i>N/A</i></td>
+                                    <td height="16" id="players_7">N/A</td>
+                                    <td height="16" id="map_7">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditCategory" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveCategory" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_9" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_9"></td>
+                                    <td height="16" align="center" id="vac_9"></td>
+                                    <td height="16" id="host_9"><i>N/A</i></td>
+                                    <td height="16" id="players_9">N/A</td>
+                                    <td height="16" id="map_9">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditCategory" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveCategory" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_11" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_11"></td>
+                                    <td height="16" align="center" id="vac_11"></td>
+                                    <td height="16" id="host_11"><i>N/A</i></td>
+                                    <td height="16" id="players_11">N/A</td>
+                                    <td height="16" id="map_11">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditCategory" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveCategory" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_12" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_12"></td>
+                                    <td height="16" align="center" id="vac_12"></td>
+                                    <td height="16" id="host_12"><i>N/A</i></td>
+                                    <td height="16" id="players_12">N/A</td>
+                                    <td height="16" id="map_12">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditCategory" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveCategory" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_15" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_15"></td>
+                                    <td height="16" align="center" id="vac_15"></td>
+                                    <td height="16" id="host_15"><i>N/A</i></td>
+                                    <td height="16" id="players_15">N/A</td>
+                                    <td height="16" id="map_15">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditCategory" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveCategory" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_16" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_16"></td>
+                                    <td height="16" align="center" id="vac_16"></td>
+                                    <td height="16" id="host_16"><i>N/A</i></td>
+                                    <td height="16" id="players_16">N/A</td>
+                                    <td height="16" id="map_16">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditCategory" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveCategory" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                                <tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_17" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                    <td height="16" align="center">N/A</td>
+                                    <td height="16" align="center" id="os_17"></td>
+                                    <td height="16" align="center" id="vac_17"></td>
+                                    <td height="16" id="host_17"><i>N/A</i></td>
+                                    <td height="16" id="players_17">N/A</td>
+                                    <td height="16" id="map_17">N/A</td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="EditCategory" class="btn btn-block btn-success">Edit</a></td>
+                                    <td height="16" id="map_4"><a asp-action="Index" asp-controller="RemoveCategory" class="btn btn-block btn-danger">Remove</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

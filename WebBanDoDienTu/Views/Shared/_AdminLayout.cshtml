@@ -1,0 +1,1083 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>@ViewData["Title"]</title>
+    <link href="~/css/AdminStyle.css" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #308ee0;
+            --secondary: #e5e5e5;
+            --success: #00ce68;
+            --info: #8862e0;
+            --warning: #ffaf00;
+            --danger: #e65251;
+            --light: #f3f5f6;
+            --dark: #424964;
+            --main-bg: #272c33;
+            --main-color: #929ca0;
+            --main-border: #3e4356;
+            --link-hover: white;
+            --nav-link-color: #b3bbc6;
+            --nav-link-color-hover: white;
+            --nav-link-bg: none;
+            --nav-link-bg-hover: none;
+            --wrapper-bg: #383f48;
+            --breadcrumb-bg: #424964;
+            --nav-grad-left: #00e4d0;
+            --nav-grad-right: #5983e8;
+        }
+
+        body *:not([class*="btn"]) {
+            border-color: #3e4356 !important;
+        }
+
+        .mce-btn {
+            border-color: #b1b1b1 !important;
+        }
+
+        body {
+            color: var(--main-color);
+            background-color: var(--main-bg);
+        }
+
+        .navbar.default-layout .navbar-brand-wrapper {
+            background: var(--main-bg);
+        }
+
+        .sidebar {
+            background: var(--main-bg);
+        }
+
+            .sidebar .nav .nav-item .nav-link {
+                color: var(--nav-link-color);
+            }
+
+            .sidebar .nav .nav-item.active {
+                background: none;
+            }
+
+                .sidebar .nav .nav-item.active > .nav-link {
+                    color: var(--primary);
+                }
+
+                .sidebar .nav .nav-item.active:before, .sidebar-themes .nav .nav-item:before {
+                    background: var(--primary);
+                }
+
+            .sidebar .nav:not(.sub-menu) > .nav-item:hover:not(.nav-profile) > .nav-link {
+                color: var(--nav-link-color-hover);
+                background: var(--nav-link-bg);
+            }
+
+            .sidebar .nav .nav-item:hover .nav-link .menu-icon {
+                color: var(--nav-link-color-hover);
+            }
+
+        .nav-pills .nav-item .nav-link {
+            color: var(--main-color);
+        }
+
+        .content-wrapper {
+            background: var(--wrapper-bg);
+        }
+
+        .breadcrumb {
+            color: #fff;
+            background-color: var(--breadcrumb-bg) !important;
+        }
+
+        .purchace-popup > div > span {
+            background: var(--main-bg);
+        }
+
+            .purchace-popup > div > span p {
+                color: var(--main-color);
+            }
+
+        .card {
+            background-color: var(--main-bg);
+        }
+
+        .card-title {
+            color: white;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background: rgba(0,0,0,0.05);
+        }
+
+        .table-hover tbody tr:hover {
+            background: rgba(0,0,0,0.1);
+        }
+
+        .table .table {
+            background: none;
+        }
+
+        .footer {
+            background: var(--main-bg);
+        }
+
+        .form-control {
+            background: rgba(255,255,255,0.05);
+            color: var(--main-color);
+            border-color: var(--main-border);
+        }
+
+            .form-control:focus {
+                color: var(--main-color);
+                background: rgba(255,255,255,0.1);
+            }
+
+        .form-check .form-check-label input:checked + .input-helper:before, .form-radio label input:checked + .input-helper:before {
+            background: none;
+        }
+
+        div.btn.btn-inverse-light,
+        div.btn.btn-inverse-light:hover {
+            background-color: rgba(255,255,255,0.05);
+            color: var(--main-color);
+            border-color: var(--main-border);
+        }
+
+        .nav-pills.nav-pills-primary .nav-item .nav-link.active, .nav-pills.nav-pills-primary .nav-item .nav-link.active:focus, .nav-pills.nav-pills-primary .nav-item .nav-link:hover {
+            background-color: #3aaaff !important;
+            box-shadow: 0 4px 20px 0 rgba(179,187,198,.14), 0 7px 10px -5px #3aaaff66;
+        }
+
+        .dropdown-menu {
+            background-color: #383f48;
+        }
+
+        body .dropdown-menu *, body .dropdown-menu {
+            border-color: rgba(0,0,0,0.4) !important;
+        }
+
+        .dropdown-menu a {
+            color: var(--main-color);
+        }
+
+        .dropdown-item:hover, .dropdown-item:focus {
+            color: white;
+            background-color: unset;
+        }
+
+        #dialog-placement {
+            background: var(--main-bg);
+            box-shadow: 0px 0px 20px 14px rgb(48, 142, 224, 0.1);
+        }
+
+        a:hover {
+            color: var(--link-hover);
+        }
+
+        .navbar.default-layout {
+            background: linear-gradient(120deg, var(--nav-grad-left) 250px, var(--nav-grad-right));
+        }
+
+        .footer a, a {
+            color: var(--primary);
+        }
+
+        .nav-pills.nav-pills-primary .nav-item .nav-link.active, .nav-pills.nav-pills-primary .nav-item .nav-link.active:focus, .nav-pills.nav-pills-primary .nav-item .nav-link:hover {
+            color: #FFFFFF;
+        }
+
+        .form-check .form-check-label input:checked + .input-helper:after {
+            color: var(--primary);
+        }
+
+        .list-arrow li:before {
+            color: var(--primary);
+        }
+
+        .form-check .form-check-label .input-helper:before, .form-radio label input + .input-helper:before {
+            border-color: var(--primary) !important;
+        }
+
+        [id*="noplayer"] h2 {
+            color: white !important;
+        }
+        /* Additional Fix For Buttons And More */
+
+        .btn-primary:focus,
+        .btn-primary.focus,
+        .btn-primary:not(:disabled):not(.disabled):active:focus,
+        .btn-primary:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-primary.dropdown-toggle:focus,
+        .btn-outline-primary:focus,
+        .btn-outline-primary.focus,
+        .btn-outline-primary:not(:disabled):not(.disabled):active:focus,
+        .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-outline-primary.dropdown-toggle:focus {
+            box-shadow: 0 0 0 0.2rem rgb(48, 142, 224, 0.5);
+        }
+
+        .btn.btn-primary {
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover {
+            color: #FFFFFF;
+            background-color: #22639d;
+            border-color: #1f5b8f;
+        }
+
+        .btn-primary:not(:disabled):not(.disabled):active,
+        .btn-primary:not(:disabled):not(.disabled).active,
+        .show > .btn-primary.dropdown-toggle {
+            background-color: #1f5b8f;
+            border-color: #1b507d;
+        }
+
+        .nav-pills.nav-pills-primary .nav-item .nav-link.active,
+        .nav-pills.nav-pills-primary .nav-item .nav-link.active:focus,
+        .nav-pills.nav-pills-primary .nav-item .nav-link:hover {
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgb(48, 142, 224, 0.4);
+        }
+
+        .bg-inverse-primary {
+            background: rgb(48, 142, 224, 0.2);
+        }
+
+        .badge-inverse-primary {
+            background: rgb(48, 142, 224, 0.3);
+        }
+
+        .btn-inverse-primary {
+            background-color: rgb(48, 142, 224, 0.2);
+            border-color: rgb(48, 142, 224, 0);
+        }
+
+            .btn-inverse-primary.focus,
+            .btn-inverse-primary:focus {
+                box-shadow: 0 0 0 3px rgb(48, 142, 224, 0.5);
+            }
+
+        .btn-inverse-outline-primary {
+            border-color: rgb(48, 142, 224, 0.2);
+        }
+
+            .btn-inverse-outline-primary:hover {
+                background-color: rgb(48, 142, 224, 0.2);
+                border-color: rgb(48, 142, 224, 0.2);
+            }
+
+            .btn-inverse-outline-primary.focus,
+            .btn-inverse-outline-primary:focus {
+                box-shadow: 0 0 0 3px rgb(48, 142, 224, 0.5);
+            }
+
+        .card-inverse-primary {
+            background: rgb(48, 142, 224, 0.2);
+        }
+
+        .badge-primary[href]:hover, .badge-primary[href]:focus {
+            background-color: #1f5b8f !important;
+        }
+
+        a.bg-primary:hover, a.bg-primary:focus,
+        button.bg-primary:hover,
+        button.bg-primary:focus {
+            background-color: #1f5b8f !important;
+        }
+
+        a.text-primary:hover, a.text-primary:focus {
+            color: #1f5b8f !important;
+        }
+
+        .btn-secondary:focus,
+        .btn-secondary.focus,
+        .btn-secondary:not(:disabled):not(.disabled):active:focus,
+        .btn-secondary:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-secondary.dropdown-toggle:focus,
+        .btn-outline-secondary:focus,
+        .btn-outline-secondary.focus,
+        .btn-outline-secondary:not(:disabled):not(.disabled):active:focus,
+        .btn-outline-secondary:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-outline-secondary.dropdown-toggle:focus {
+            box-shadow: 0 0 0 0.2rem rgb(229, 229, 229, 0.5);
+        }
+
+        .btn.btn-secondary {
+            color: #383F48;
+        }
+
+        .btn-secondary:hover {
+            color: #383F48;
+            background-color: #a0a0a0;
+            border-color: #939393;
+        }
+
+        .btn-secondary:not(:disabled):not(.disabled):active,
+        .btn-secondary:not(:disabled):not(.disabled).active,
+        .show > .btn-secondary.dropdown-toggle {
+            background-color: #939393;
+            border-color: #808080;
+        }
+
+        .nav-pills.nav-pills-secondary .nav-item .nav-link.active,
+        .nav-pills.nav-pills-secondary .nav-item .nav-link.active:focus,
+        .nav-pills.nav-pills-secondary .nav-item .nav-link:hover {
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgb(229, 229, 229, 0.4);
+        }
+
+        .bg-inverse-secondary {
+            background: rgb(229, 229, 229, 0.2);
+        }
+
+        .badge-inverse-secondary {
+            background: rgb(229, 229, 229, 0.3);
+        }
+
+        .btn-inverse-secondary {
+            background-color: rgb(229, 229, 229, 0.2);
+            border-color: rgb(229, 229, 229, 0);
+        }
+
+            .btn-inverse-secondary.focus,
+            .btn-inverse-secondary:focus {
+                box-shadow: 0 0 0 3px rgb(229, 229, 229, 0.5);
+            }
+
+        .btn-inverse-outline-secondary {
+            border-color: rgb(229, 229, 229, 0.2);
+        }
+
+            .btn-inverse-outline-secondary:hover {
+                background-color: rgb(229, 229, 229, 0.2);
+                border-color: rgb(229, 229, 229, 0.2);
+            }
+
+            .btn-inverse-outline-secondary.focus,
+            .btn-inverse-outline-secondary:focus {
+                box-shadow: 0 0 0 3px rgb(229, 229, 229, 0.5);
+            }
+
+        .card-inverse-secondary {
+            background: rgb(229, 229, 229, 0.2);
+        }
+
+        .badge-secondary[href]:hover, .badge-secondary[href]:focus {
+            background-color: #939393 !important;
+        }
+
+        a.bg-secondary:hover, a.bg-secondary:focus,
+        button.bg-secondary:hover,
+        button.bg-secondary:focus {
+            background-color: #939393 !important;
+        }
+
+        a.text-secondary:hover, a.text-secondary:focus {
+            color: #939393 !important;
+        }
+
+        .btn-success:focus,
+        .btn-success.focus,
+        .btn-success:not(:disabled):not(.disabled):active:focus,
+        .btn-success:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-success.dropdown-toggle:focus,
+        .btn-outline-success:focus,
+        .btn-outline-success.focus,
+        .btn-outline-success:not(:disabled):not(.disabled):active:focus,
+        .btn-outline-success:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-outline-success.dropdown-toggle:focus {
+            box-shadow: 0 0 0 0.2rem rgb(0, 206, 104, 0.5);
+        }
+
+        .btn.btn-success {
+            color: #383F48;
+        }
+
+        .btn-success:hover {
+            color: #FFFFFF;
+            background-color: #009049;
+            border-color: #008443;
+        }
+
+        .btn-success:not(:disabled):not(.disabled):active,
+        .btn-success:not(:disabled):not(.disabled).active,
+        .show > .btn-success.dropdown-toggle {
+            background-color: #008443;
+            border-color: #00733a;
+        }
+
+        .nav-pills.nav-pills-success .nav-item .nav-link.active,
+        .nav-pills.nav-pills-success .nav-item .nav-link.active:focus,
+        .nav-pills.nav-pills-success .nav-item .nav-link:hover {
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgb(0, 206, 104, 0.4);
+        }
+
+        .bg-inverse-success {
+            background: rgb(0, 206, 104, 0.2);
+        }
+
+        .badge-inverse-success {
+            background: rgb(0, 206, 104, 0.3);
+        }
+
+        .btn-inverse-success {
+            background-color: rgb(0, 206, 104, 0.2);
+            border-color: rgb(0, 206, 104, 0);
+        }
+
+            .btn-inverse-success.focus,
+            .btn-inverse-success:focus {
+                box-shadow: 0 0 0 3px rgb(0, 206, 104, 0.5);
+            }
+
+        .btn-inverse-outline-success {
+            border-color: rgb(0, 206, 104, 0.2);
+        }
+
+            .btn-inverse-outline-success:hover {
+                background-color: rgb(0, 206, 104, 0.2);
+                border-color: rgb(0, 206, 104, 0.2);
+            }
+
+            .btn-inverse-outline-success.focus,
+            .btn-inverse-outline-success:focus {
+                box-shadow: 0 0 0 3px rgb(0, 206, 104, 0.5);
+            }
+
+        .card-inverse-success {
+            background: rgb(0, 206, 104, 0.2);
+        }
+
+        .badge-success[href]:hover, .badge-success[href]:focus {
+            background-color: #008443 !important;
+        }
+
+        a.bg-success:hover, a.bg-success:focus,
+        button.bg-success:hover,
+        button.bg-success:focus {
+            background-color: #008443 !important;
+        }
+
+        a.text-success:hover, a.text-success:focus {
+            color: #008443 !important;
+        }
+
+        .btn-info:focus,
+        .btn-info.focus,
+        .btn-info:not(:disabled):not(.disabled):active:focus,
+        .btn-info:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-info.dropdown-toggle:focus,
+        .btn-outline-info:focus,
+        .btn-outline-info.focus,
+        .btn-outline-info:not(:disabled):not(.disabled):active:focus,
+        .btn-outline-info:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-outline-info.dropdown-toggle:focus {
+            box-shadow: 0 0 0 0.2rem rgb(136, 98, 224, 0.5);
+        }
+
+        .btn.btn-info {
+            color: #FFFFFF;
+        }
+
+        .btn-info:hover {
+            color: #FFFFFF;
+            background-color: #5f459d;
+            border-color: #573f8f;
+        }
+
+        .btn-info:not(:disabled):not(.disabled):active,
+        .btn-info:not(:disabled):not(.disabled).active,
+        .show > .btn-info.dropdown-toggle {
+            background-color: #573f8f;
+            border-color: #4c377d;
+        }
+
+        .nav-pills.nav-pills-info .nav-item .nav-link.active,
+        .nav-pills.nav-pills-info .nav-item .nav-link.active:focus,
+        .nav-pills.nav-pills-info .nav-item .nav-link:hover {
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgb(136, 98, 224, 0.4);
+        }
+
+        .bg-inverse-info {
+            background: rgb(136, 98, 224, 0.2);
+        }
+
+        .badge-inverse-info {
+            background: rgb(136, 98, 224, 0.3);
+        }
+
+        .btn-inverse-info {
+            background-color: rgb(136, 98, 224, 0.2);
+            border-color: rgb(136, 98, 224, 0);
+        }
+
+            .btn-inverse-info.focus,
+            .btn-inverse-info:focus {
+                box-shadow: 0 0 0 3px rgb(136, 98, 224, 0.5);
+            }
+
+        .btn-inverse-outline-info {
+            border-color: rgb(136, 98, 224, 0.2);
+        }
+
+            .btn-inverse-outline-info:hover {
+                background-color: rgb(136, 98, 224, 0.2);
+                border-color: rgb(136, 98, 224, 0.2);
+            }
+
+            .btn-inverse-outline-info.focus,
+            .btn-inverse-outline-info:focus {
+                box-shadow: 0 0 0 3px rgb(136, 98, 224, 0.5);
+            }
+
+        .card-inverse-info {
+            background: rgb(136, 98, 224, 0.2);
+        }
+
+        .badge-info[href]:hover, .badge-info[href]:focus {
+            background-color: #573f8f !important;
+        }
+
+        a.bg-info:hover, a.bg-info:focus,
+        button.bg-info:hover,
+        button.bg-info:focus {
+            background-color: #573f8f !important;
+        }
+
+        a.text-info:hover, a.text-info:focus {
+            color: #573f8f !important;
+        }
+
+        .btn-warning:focus,
+        .btn-warning.focus,
+        .btn-warning:not(:disabled):not(.disabled):active:focus,
+        .btn-warning:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-warning.dropdown-toggle:focus,
+        .btn-outline-warning:focus,
+        .btn-outline-warning.focus,
+        .btn-outline-warning:not(:disabled):not(.disabled):active:focus,
+        .btn-outline-warning:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-outline-warning.dropdown-toggle:focus {
+            box-shadow: 0 0 0 0.2rem rgb(255, 175, 0, 0.5);
+        }
+
+        .btn.btn-warning {
+            color: #383F48;
+        }
+
+        .btn-warning:hover {
+            color: #FFFFFF;
+            background-color: #b37b00;
+            border-color: #a37000;
+        }
+
+        .btn-warning:not(:disabled):not(.disabled):active,
+        .btn-warning:not(:disabled):not(.disabled).active,
+        .show > .btn-warning.dropdown-toggle {
+            background-color: #a37000;
+            border-color: #8f6200;
+        }
+
+        .nav-pills.nav-pills-warning .nav-item .nav-link.active,
+        .nav-pills.nav-pills-warning .nav-item .nav-link.active:focus,
+        .nav-pills.nav-pills-warning .nav-item .nav-link:hover {
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgb(255, 175, 0, 0.4);
+        }
+
+        .bg-inverse-warning {
+            background: rgb(255, 175, 0, 0.2);
+        }
+
+        .badge-inverse-warning {
+            background: rgb(255, 175, 0, 0.3);
+        }
+
+        .btn-inverse-warning {
+            background-color: rgb(255, 175, 0, 0.2);
+            border-color: rgb(255, 175, 0, 0);
+        }
+
+            .btn-inverse-warning.focus,
+            .btn-inverse-warning:focus {
+                box-shadow: 0 0 0 3px rgb(255, 175, 0, 0.5);
+            }
+
+        .btn-inverse-outline-warning {
+            border-color: rgb(255, 175, 0, 0.2);
+        }
+
+            .btn-inverse-outline-warning:hover {
+                background-color: rgb(255, 175, 0, 0.2);
+                border-color: rgb(255, 175, 0, 0.2);
+            }
+
+            .btn-inverse-outline-warning.focus,
+            .btn-inverse-outline-warning:focus {
+                box-shadow: 0 0 0 3px rgb(255, 175, 0, 0.5);
+            }
+
+        .card-inverse-warning {
+            background: rgb(255, 175, 0, 0.2);
+        }
+
+        .badge-warning[href]:hover, .badge-warning[href]:focus {
+            background-color: #a37000 !important;
+        }
+
+        a.bg-warning:hover, a.bg-warning:focus,
+        button.bg-warning:hover,
+        button.bg-warning:focus {
+            background-color: #a37000 !important;
+        }
+
+        a.text-warning:hover, a.text-warning:focus {
+            color: #a37000 !important;
+        }
+
+        .btn-danger:focus,
+        .btn-danger.focus,
+        .btn-danger:not(:disabled):not(.disabled):active:focus,
+        .btn-danger:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-danger.dropdown-toggle:focus,
+        .btn-outline-danger:focus,
+        .btn-outline-danger.focus,
+        .btn-outline-danger:not(:disabled):not(.disabled):active:focus,
+        .btn-outline-danger:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-outline-danger.dropdown-toggle:focus {
+            box-shadow: 0 0 0 0.2rem rgb(230, 82, 81, 0.5);
+        }
+
+        .btn.btn-danger {
+            color: #FFFFFF;
+        }
+
+        .btn-danger:hover {
+            color: #FFFFFF;
+            background-color: #a13939;
+            border-color: #933434;
+        }
+
+        .btn-danger:not(:disabled):not(.disabled):active,
+        .btn-danger:not(:disabled):not(.disabled).active,
+        .show > .btn-danger.dropdown-toggle {
+            background-color: #933434;
+            border-color: #812e2d;
+        }
+
+        .nav-pills.nav-pills-danger .nav-item .nav-link.active,
+        .nav-pills.nav-pills-danger .nav-item .nav-link.active:focus,
+        .nav-pills.nav-pills-danger .nav-item .nav-link:hover {
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgb(230, 82, 81, 0.4);
+        }
+
+        .bg-inverse-danger {
+            background: rgb(230, 82, 81, 0.2);
+        }
+
+        .badge-inverse-danger {
+            background: rgb(230, 82, 81, 0.3);
+        }
+
+        .btn-inverse-danger {
+            background-color: rgb(230, 82, 81, 0.2);
+            border-color: rgb(230, 82, 81, 0);
+        }
+
+            .btn-inverse-danger.focus,
+            .btn-inverse-danger:focus {
+                box-shadow: 0 0 0 3px rgb(230, 82, 81, 0.5);
+            }
+
+        .btn-inverse-outline-danger {
+            border-color: rgb(230, 82, 81, 0.2);
+        }
+
+            .btn-inverse-outline-danger:hover {
+                background-color: rgb(230, 82, 81, 0.2);
+                border-color: rgb(230, 82, 81, 0.2);
+            }
+
+            .btn-inverse-outline-danger.focus,
+            .btn-inverse-outline-danger:focus {
+                box-shadow: 0 0 0 3px rgb(230, 82, 81, 0.5);
+            }
+
+        .card-inverse-danger {
+            background: rgb(230, 82, 81, 0.2);
+        }
+
+        .badge-danger[href]:hover, .badge-danger[href]:focus {
+            background-color: #933434 !important;
+        }
+
+        a.bg-danger:hover, a.bg-danger:focus,
+        button.bg-danger:hover,
+        button.bg-danger:focus {
+            background-color: #933434 !important;
+        }
+
+        a.text-danger:hover, a.text-danger:focus {
+            color: #933434 !important;
+        }
+
+        .btn-light:focus,
+        .btn-light.focus,
+        .btn-light:not(:disabled):not(.disabled):active:focus,
+        .btn-light:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-light.dropdown-toggle:focus,
+        .btn-outline-light:focus,
+        .btn-outline-light.focus,
+        .btn-outline-light:not(:disabled):not(.disabled):active:focus,
+        .btn-outline-light:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-outline-light.dropdown-toggle:focus {
+            box-shadow: 0 0 0 0.2rem rgb(243, 245, 246, 0.5);
+        }
+
+        .btn.btn-light {
+            color: #383F48;
+        }
+
+        .btn-light:hover {
+            color: #383F48;
+            background-color: #aaacac;
+            border-color: #9c9d9d;
+        }
+
+        .btn-light:not(:disabled):not(.disabled):active,
+        .btn-light:not(:disabled):not(.disabled).active,
+        .show > .btn-light.dropdown-toggle {
+            background-color: #9c9d9d;
+            border-color: #88898a;
+        }
+
+        .nav-pills.nav-pills-light .nav-item .nav-link.active,
+        .nav-pills.nav-pills-light .nav-item .nav-link.active:focus,
+        .nav-pills.nav-pills-light .nav-item .nav-link:hover {
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgb(243, 245, 246, 0.4);
+        }
+
+        .bg-inverse-light {
+            background: rgb(243, 245, 246, 0.2);
+        }
+
+        .badge-inverse-light {
+            background: rgb(243, 245, 246, 0.3);
+        }
+
+        .btn-inverse-light {
+            background-color: rgb(243, 245, 246, 0.2);
+            border-color: rgb(243, 245, 246, 0);
+        }
+
+            .btn-inverse-light.focus,
+            .btn-inverse-light:focus {
+                box-shadow: 0 0 0 3px rgb(243, 245, 246, 0.5);
+            }
+
+        .btn-inverse-outline-light {
+            border-color: rgb(243, 245, 246, 0.2);
+        }
+
+            .btn-inverse-outline-light:hover {
+                background-color: rgb(243, 245, 246, 0.2);
+                border-color: rgb(243, 245, 246, 0.2);
+            }
+
+            .btn-inverse-outline-light.focus,
+            .btn-inverse-outline-light:focus {
+                box-shadow: 0 0 0 3px rgb(243, 245, 246, 0.5);
+            }
+
+        .card-inverse-light {
+            background: rgb(243, 245, 246, 0.2);
+        }
+
+        .badge-light[href]:hover, .badge-light[href]:focus {
+            background-color: #9c9d9d !important;
+        }
+
+        a.bg-light:hover, a.bg-light:focus,
+        button.bg-light:hover,
+        button.bg-light:focus {
+            background-color: #9c9d9d !important;
+        }
+
+        a.text-light:hover, a.text-light:focus {
+            color: #9c9d9d !important;
+        }
+
+        .btn-dark:focus,
+        .btn-dark.focus,
+        .btn-dark:not(:disabled):not(.disabled):active:focus,
+        .btn-dark:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-dark.dropdown-toggle:focus,
+        .btn-outline-dark:focus,
+        .btn-outline-dark.focus,
+        .btn-outline-dark:not(:disabled):not(.disabled):active:focus,
+        .btn-outline-dark:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-outline-dark.dropdown-toggle:focus {
+            box-shadow: 0 0 0 0.2rem rgb(66, 73, 100, 0.5);
+        }
+
+        .btn.btn-dark {
+            color: #FFFFFF;
+        }
+
+        .btn-dark:hover {
+            color: #FFFFFF;
+            background-color: #2e3346;
+            border-color: #2a2f40;
+        }
+
+        .btn-dark:not(:disabled):not(.disabled):active,
+        .btn-dark:not(:disabled):not(.disabled).active,
+        .show > .btn-dark.dropdown-toggle {
+            background-color: #2a2f40;
+            border-color: #252938;
+        }
+
+        .nav-pills.nav-pills-dark .nav-item .nav-link.active,
+        .nav-pills.nav-pills-dark .nav-item .nav-link.active:focus,
+        .nav-pills.nav-pills-dark .nav-item .nav-link:hover {
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgb(66, 73, 100, 0.4);
+        }
+
+        .bg-inverse-dark {
+            background: rgb(66, 73, 100, 0.2);
+        }
+
+        .badge-inverse-dark {
+            background: rgb(66, 73, 100, 0.3);
+        }
+
+        .btn-inverse-dark {
+            background-color: rgb(66, 73, 100, 0.2);
+            border-color: rgb(66, 73, 100, 0);
+        }
+
+            .btn-inverse-dark.focus,
+            .btn-inverse-dark:focus {
+                box-shadow: 0 0 0 3px rgb(66, 73, 100, 0.5);
+            }
+
+        .btn-inverse-outline-dark {
+            border-color: rgb(66, 73, 100, 0.2);
+        }
+
+            .btn-inverse-outline-dark:hover {
+                background-color: rgb(66, 73, 100, 0.2);
+                border-color: rgb(66, 73, 100, 0.2);
+            }
+
+            .btn-inverse-outline-dark.focus,
+            .btn-inverse-outline-dark:focus {
+                box-shadow: 0 0 0 3px rgb(66, 73, 100, 0.5);
+            }
+
+        .card-inverse-dark {
+            background: rgb(66, 73, 100, 0.2);
+        }
+
+        .badge-dark[href]:hover, .badge-dark[href]:focus {
+            background-color: #2a2f40 !important;
+        }
+
+        a.bg-dark:hover, a.bg-dark:focus,
+        button.bg-dark:hover,
+        button.bg-dark:focus {
+            background-color: #2a2f40 !important;
+        }
+
+        a.text-dark:hover, a.text-dark:focus {
+            color: #2a2f40 !important;
+        }
+    </style>
+    
+</head>
+<body onload="NavListFix()">
+    <div class="container-scroller">
+        <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+                <a class="navbar-brand brand-logo" asp-action="Index" asp-controller="Home">
+                    <img src="images/logos/sb-large.png" alt="Admin Page" />
+                </a>
+                <a class="navbar-brand brand-logo-mini" asp-action="Index" asp-controller="Home">
+                    <img src="images/logos/sb-large-mini.png" alt="Admin Page" onError="this.onerror=null;this.src='themes/star/images/sb-large-mini.png';" />
+                </a>
+            </div>
+
+            <div class="navbar-menu-wrapper d-flex align-items-center">
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                            <i class="mdi mdi-magnify"></i>
+                        </a>
+                        @*<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                                <form method="get" action="index.php" id="banform">
+                                    <input type="hidden" name="p" value="banlist" />
+                                    <a class="dropdown-item">
+                                        <p class="mb-0 font-weight-normal float-left">
+                                            Search Bans...
+                                        </p>
+                                    </a>
+                                    <a class="dropdown-item preview-item">
+                                        <div class="preview-thumbnail" onclick="document.getElementById('banform').submit();" style="cursor:pointer;">
+                                            <div class="preview-icon bg-danger">
+                                                <i class="mdi mdi-do-not-disturb mx-0"></i>
+                                            </div>
+                                        </div>
+                                        <div class="preview-item-content">
+                                            <input type="text" name="searchText" class="form-control" placeholder="Search Bans..." style="width:190px;">
+                                        </div>
+                                    </a>
+                                </form>
+                                <div class="dropdown-divider"></div>
+                                <form method="get" action="index.php" id="commform">
+                                    <input type="hidden" name="p" value="commslist" />
+                                    <a class="dropdown-item">
+                                        <p class="mb-0 font-weight-normal float-left">
+                                            Search Comms...
+                                        </p>
+                                    </a>
+                                    <a class="dropdown-item preview-item">
+                                        <div class="preview-thumbnail" onclick="document.getElementById('commform').submit();" style="cursor:pointer;">
+                                            <div class="preview-icon bg-info">
+                                                <i class="mdi mdi-microphone-off mx-0"></i>
+                                            </div>
+                                        </div>
+                                        <div class="preview-item-content">
+                                            <input type="text" name="searchText" class="form-control" placeholder="Search Comms..." style="width:190px;">
+                                        </div>
+                                    </a>
+                                </form>
+                                <div class="dropdown-divider"></div>
+                            </div>*@
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid page-body-wrapper">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav" id="js_fixme">
+                <li class="nav-item nav-profile">
+                    <div class="nav-link">
+                        <a asp-action="Index" asp-controller="Login" class="btn btn-success btn-block">
+                            Login
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item" style="margin-left:20px">
+                    <a  asp-action="Index" asp-controller="Home" class="tip" title="Dashboard :: Đây là màn hình chính." target="_self">Dashboard </a>
+                </li>
+                <li class="nav-item" style="margin-left:57px">
+                    <a href="#users"  class="tip" title="Users :: Chỉnh sửa người dùng." target="_self">Users </a>
+                </li>
+                <li class="nav-item" style="margin-left:57px">
+                    <a href="#product"  class="tip" title="Products :: Chỉnh sửa sản phẩm." target="_self">Products </a>
+                </li>
+                <li class="nav-item" style="margin-left:57px">
+                    <a href="#category" class="tip" title="Category :: Chỉnh sửa thể loại." target="_self">Category </a>
+                </li>
+                @*<li class="nav-item">
+                    <a href="index.php?p=commslist" class="tip" title="Comms :: All of the communication bans (such as chat gags and voice mutes) in the database can be viewed from here." target="_self">Comms </a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.php?p=submit" class="tip" title="Report Player :: You can submit a demo or screenshot of a suspected cheater here. It will then be up for review by one of the admins" target="_self">Report Player </a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.php?p=protest" class="tip" title="Appeal Ban :: Here you can appeal your ban. And prove your case as to why you should be unbanned." target="_self">Appeal Ban </a>
+                </li>*@
+            </ul>
+        </nav>
+        <script>
+            var elements = document.getElementById("js_fixme").getElementsByTagName("li");
+
+            for (var i = 1; i < elements.length; i++) {
+                var hrf = elements[i].getElementsByTagName("a")[0].getAttribute("href");
+                elements[i].getElementsByTagName("a")[0].setAttribute("class", "nav-link");
+                if (hrf.includes("home"))
+                    elements[i].getElementsByTagName("a")[0].innerHTML = "<i class=\"menu-icon mdi mdi-television\"></i><span class=\"menu-title\">" + elements[i].getElementsByTagName("a")[0].innerHTML + "</span>";
+                else if (hrf.includes("servers"))
+                    elements[i].getElementsByTagName("a")[0].innerHTML = "<i class=\"menu-icon mdi mdi-server\"></i><span class=\"menu-title\">" + elements[i].getElementsByTagName("a")[0].innerHTML + "</span>";
+                else if (hrf.includes("banlist"))
+                    elements[i].getElementsByTagName("a")[0].innerHTML = "<i class=\"menu-icon mdi mdi-do-not-disturb\"></i><span class=\"menu-title\">" + elements[i].getElementsByTagName("a")[0].innerHTML + "</span>";
+                else if (hrf.includes("commslist"))
+                    elements[i].getElementsByTagName("a")[0].innerHTML = "<i class=\"menu-icon mdi mdi-microphone-off\"></i><span class=\"menu-title\">" + elements[i].getElementsByTagName("a")[0].innerHTML + "</span>";
+                else if (hrf.includes("submit"))
+                    elements[i].getElementsByTagName("a")[0].innerHTML = "<i class=\"menu-icon mdi mdi-alert\"></i><span class=\"menu-title\">" + elements[i].getElementsByTagName("a")[0].innerHTML + "</span>";
+                else if (hrf.includes("protest"))
+                    elements[i].getElementsByTagName("a")[0].innerHTML = "<i class=\"menu-icon mdi mdi-lock-open\"></i><span class=\"menu-title\">" + elements[i].getElementsByTagName("a")[0].innerHTML + "</span>";
+                else if (hrf.includes("admin"))
+                    elements[i].getElementsByTagName("a")[0].innerHTML = "<i class=\"menu-icon mdi mdi-settings\"></i><span class=\"menu-title\">" + elements[i].getElementsByTagName("a")[0].innerHTML + "</span>";
+            }
+        </script>
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div id="msg-red-debug" style="display:none;">
+                    <i><img src="./images/warning.png" alt="Warning" /></i>
+                    <b>Debug</b>
+                    <br />
+                    <div id="debug-text">
+                    </div>
+                </div>
+                <div id="dialog-placement" style="vertical-align:middle;display:none;opacity:0;text-align:center;width:892px;margin:0 auto;position:fixed !important;position:absolute;overflow:hidden;top:10px;left:100px;">
+                    <table width="460px" id="dialog-holder" class="dialog-holder" border="0" cellspacing="0" cellpadding="0">
+                        <tbody width="460px">
+                            <tr>
+                                <td class="dialog-topleft"></td>
+                                <td class="dialog-border"></td>
+                                <td class="dialog-topright"></td>
+                            </tr>
+                            <tr>
+                                <td class="dialog-border"></td>
+                                <td class="box-content">
+                                    <div id="dragbar" style="cursor:pointer">
+                                        <ilayer width="100%" onSelectStart="return false">
+                                            <layer width="100%" onMouseover="dragswitch=1;if (ns4) drag_drop_ns(dialog-placement)" onMouseout="dragswitch=0">
+                                                <h2 align="left" id="dialog-title" class="ok"></h2>
+                                            </layer>
+                                        </ilayer>
+                                    </div>
+                                    <div class="dialog-content" align="left">
+                                        <div class="dialog-body">
+                                            <div class="clearfix">
+                                                <div style="float: left; margin-right: 15px;" id="dialog-icon" class="icon-info">&nbsp;</div>
+                                                <div style="width:360px;float: right; padding-bottom: 5px; font-size: 11px;" id="dialog-content-text"></div>
+                                            </div>
+                                        </div>
+                                        <div class="dialog-control" id="dialog-control">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="dialog-border"></td>
+                            </tr>
+                            <tr>
+                                <td class="dialog-bottomleft"></td>
+                                <td class="dialog-border"></td>
+                                <td class="dialog-bottomright"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                @RenderBody()
+            </div>
+                
+            </div>
+
+
+        </div>
+
+</body>
+</html>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-48466639-7"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-48466639-7');
+</script>
