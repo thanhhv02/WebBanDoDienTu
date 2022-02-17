@@ -11,13 +11,15 @@ namespace WebBanDoDienTu.Controllers
     public class LoginController : Controller
     {   
         // GET: LoginController
-        [HttpGet]
-        public ActionResult Login()
+        //[HttpGet]
+        public IActionResult Login()
         {
-            
             return View();
         }
-
+        public IActionResult About()
+        {
+            return View();
+        }
         // GET: LoginController/Details/5
         public ActionResult Details(int id)
         {

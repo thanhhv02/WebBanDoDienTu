@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -6,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace WebBanDoDienTu.Models
 {
-    public partial class BANDODIENTUContext : DbContext
+    public partial class BANDODIENTUContext : IdentityDbContext
     {
         public BANDODIENTUContext()
         {

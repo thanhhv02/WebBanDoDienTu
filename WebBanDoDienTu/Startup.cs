@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebBanDoDienTu.Areas.Identity.Data;
+using WebBanDoDienTu.Data;
 using WebBanDoDienTu.Models;
 
 namespace WebBanDoDienTu
@@ -27,11 +30,16 @@ namespace WebBanDoDienTu
         {
             var connection = Configuration.GetConnectionString("Connection");
             services.AddDbContext<BANDODIENTUContext>(options => options.UseSqlServer(connection));
+            var connectionIdentity = Configuration.GetConnectionString("Connection");
+            services.AddDbContext<WebBanDoDienTuContext>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews();
+            //services.AddIdentity
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(10);
+                options.IdleTimeout = TimeSpan.FromMinutes(1);
             });
+            services.AddIdentity<WebBanDoDienTuUser, IdentityRole>().AddDefaultUI()
+                .AddEntityFrameworkStores<WebBanDoDienTuContext>().AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +62,7 @@ namespace WebBanDoDienTu
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

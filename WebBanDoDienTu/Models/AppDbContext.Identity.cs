@@ -29,7 +29,7 @@ namespace App.Models
                     entityType.SetTableName(tableName.Substring(6));
                 }
             }
-        } 
+        }
 
         //public DbSet<Category> Categories { get; set; }
     }
