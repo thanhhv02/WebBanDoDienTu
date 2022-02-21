@@ -1,15 +1,15 @@
-﻿@model IEnumerable<WebBanDoDienTu.Models.Customer>
+﻿@model IEnumerable<WebBanDoDienTu.Models.Customers>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-<h1>Danh sách người dùng</h1>
+
+<h1>Index</h1>
 
 <p>
-    @*<a asp-action="Create">Create New</a>*@
-    <a class="btn btn-block btn-success" style="margin-left:auto;width:200px" asp-action="Create">Tạo mới</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <div class="table-responsive" id="server_group" style="overflow: scroll; height: 300px;">
     <table class="table table-bordered table-striped table-hover tbl-sm">
@@ -17,6 +17,9 @@
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Name)
@@ -29,6 +32,18 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifiedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifiedBy)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Status)
@@ -44,6 +59,9 @@
                         @Html.DisplayFor(modelItem => item.UserName)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
@@ -54,6 +72,18 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModifiedDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModifiedBy)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Status)
@@ -67,4 +97,4 @@
             }
         </tbody>
     </table>
-    </div>
+</div>

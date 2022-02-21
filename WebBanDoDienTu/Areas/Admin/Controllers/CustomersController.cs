@@ -33,14 +33,14 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customers
+            var customers = await _context.Customers
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (customer == null)
+            if (customers == null)
             {
                 return NotFound();
             }
 
-            return View(customer);
+            return View(customers);
         }
 
         // GET: Admin/Customers/Create
@@ -54,15 +54,15 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UserName,Password,Name,Address,Email,Phone,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,Status")] Customer customer)
+        public async Task<IActionResult> Create([Bind("Id,UserName,Password,Name,Address,Email,Phone,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,Status")] Customers customers)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(customer);
+                _context.Add(customers);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(customer);
+            return View(customers);
         }
 
         // GET: Admin/Customers/Edit/5
@@ -73,12 +73,12 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer == null)
+            var customers = await _context.Customers.FindAsync(id);
+            if (customers == null)
             {
                 return NotFound();
             }
-            return View(customer);
+            return View(customers);
         }
 
         // POST: Admin/Customers/Edit/5
@@ -86,9 +86,9 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,UserName,Password,Name,Address,Email,Phone,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,Status")] Customer customer)
+        public async Task<IActionResult> Edit(long id, [Bind("Id,UserName,Password,Name,Address,Email,Phone,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,Status")] Customers customers)
         {
-            if (id != customer.Id)
+            if (id != customers.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(customer);
+                    _context.Update(customers);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CustomerExists(customer.Id))
+                    if (!CustomersExists(customers.Id))
                     {
                         return NotFound();
                     }
@@ -113,7 +113,7 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(customer);
+            return View(customers);
         }
 
         // GET: Admin/Customers/Delete/5
@@ -124,14 +124,14 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customers
+            var customers = await _context.Customers
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (customer == null)
+            if (customers == null)
             {
                 return NotFound();
             }
 
-            return View(customer);
+            return View(customers);
         }
 
         // POST: Admin/Customers/Delete/5
@@ -139,13 +139,13 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
-            var customer = await _context.Customers.FindAsync(id);
-            _context.Customers.Remove(customer);
+            var customers = await _context.Customers.FindAsync(id);
+            _context.Customers.Remove(customers);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CustomerExists(long id)
+        private bool CustomersExists(long id)
         {
             return _context.Customers.Any(e => e.Id == id);
         }

@@ -1,13 +1,16 @@
 ﻿using System;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
-#nullable disable
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace WebBanDoDienTu.Models
 {
-    public partial class BANDODIENTUContext : IdentityDbContext
+    public partial class BANDODIENTUContext : DbContext
     {
         public BANDODIENTUContext()
         {
@@ -18,28 +21,30 @@ namespace WebBanDoDienTu.Models
         {
         }
 
-        public virtual DbSet<About> Abouts { get; set; }
-        public virtual DbSet<Cart> Carts { get; set; }
-        public virtual DbSet<CartDetail> CartDetails { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Contact> Contacts { get; set; }
-        public virtual DbSet<Content> Contents { get; set; }
-        public virtual DbSet<ContentTag> ContentTags { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<Feedback> Feedbacks { get; set; }
-        public virtual DbSet<Footer> Footers { get; set; }
-        public virtual DbSet<Menu> Menus { get; set; }
-        public virtual DbSet<MenuType> MenuTypes { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<ProductCategory> ProductCategories { get; set; }
-        public virtual DbSet<Slide> Slides { get; set; }
-        public virtual DbSet<Tag> Tags { get; set; }
+        public virtual DbSet<About> About { get; set; }
+        public virtual DbSet<Cart> Cart { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Contact> Contact { get; set; }
+        public virtual DbSet<Content> Content { get; set; }
+        public virtual DbSet<ContentTag> ContentTag { get; set; }
+        public virtual DbSet<Customers> Customers { get; set; }
+        public virtual DbSet<Feedback> Feedback { get; set; }
+        public virtual DbSet<Footer> Footer { get; set; }
+        public virtual DbSet<Menu> Menu { get; set; }
+        public virtual DbSet<MenuType> MenuType { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<ProductCategory> ProductCategory { get; set; }
+        public virtual DbSet<Slide> Slide { get; set; }
+        public virtual DbSet<Tag> Tag { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsetting.json");
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Server=DESKTOP-3KE0OUQ\\T;Database=BANDODIENTU;Trusted_Connection=True;");
             }
         }
@@ -48,8 +53,6 @@ namespace WebBanDoDienTu.Models
         {
             modelBuilder.Entity<About>(entity =>
             {
-                entity.ToTable("About");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.CreatedBy)
@@ -68,7 +71,7 @@ namespace WebBanDoDienTu.Models
 
                 entity.Property(e => e.MetaDescriptions)
                     .HasMaxLength(250)
-                    .IsFixedLength(true);
+                    .IsFixedLength();
 
                 entity.Property(e => e.MetaTile)
                     .HasMaxLength(250)
@@ -89,42 +92,13 @@ namespace WebBanDoDienTu.Models
 
             modelBuilder.Entity<Cart>(entity =>
             {
-                entity.ToTable("Cart");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.CreatedDate)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(getdate())");
-
-                entity.Property(e => e.UserId).HasColumnName("UserID");
-            });
-
-            modelBuilder.Entity<CartDetail>(entity =>
-            {
-                entity.HasKey(e => new { e.CartId, e.ProductId });
-
-                entity.ToTable("Cart_Detail");
-
-                entity.Property(e => e.CartId).HasColumnName("CartID");
-
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
-
-                entity.Property(e => e.CreatedDate)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(getdate())");
-
-                entity.Property(e => e.Id)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.Quantity).HasDefaultValueSql("((0))");
             });
 
             modelBuilder.Entity<Category>(entity =>
             {
-                entity.ToTable("Category");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.CreatedBy)
@@ -139,7 +113,7 @@ namespace WebBanDoDienTu.Models
 
                 entity.Property(e => e.MetaDescriptions)
                     .HasMaxLength(250)
-                    .IsFixedLength(true);
+                    .IsFixedLength();
 
                 entity.Property(e => e.MetaTile)
                     .HasMaxLength(250)
@@ -166,8 +140,6 @@ namespace WebBanDoDienTu.Models
 
             modelBuilder.Entity<Contact>(entity =>
             {
-                entity.ToTable("Contact");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Content).HasColumnType("ntext");
@@ -175,8 +147,6 @@ namespace WebBanDoDienTu.Models
 
             modelBuilder.Entity<Content>(entity =>
             {
-                entity.ToTable("Content");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
@@ -197,7 +167,7 @@ namespace WebBanDoDienTu.Models
 
                 entity.Property(e => e.MetaDescriptions)
                     .HasMaxLength(250)
-                    .IsFixedLength(true);
+                    .IsFixedLength();
 
                 entity.Property(e => e.MetaTile)
                     .HasMaxLength(250)
@@ -224,17 +194,15 @@ namespace WebBanDoDienTu.Models
             {
                 entity.HasKey(e => new { e.ContentId, e.TagId });
 
-                entity.ToTable("ContentTag");
-
                 entity.Property(e => e.ContentId).HasColumnName("ContentID");
 
                 entity.Property(e => e.TagId)
+                    .HasColumnName("TagID")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("TagID");
+                    .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Customer>(entity =>
+            modelBuilder.Entity<Customers>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
@@ -269,8 +237,6 @@ namespace WebBanDoDienTu.Models
 
             modelBuilder.Entity<Feedback>(entity =>
             {
-                entity.ToTable("Feedback");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Address).HasMaxLength(50);
@@ -288,20 +254,16 @@ namespace WebBanDoDienTu.Models
 
             modelBuilder.Entity<Footer>(entity =>
             {
-                entity.ToTable("Footer");
-
                 entity.Property(e => e.Id)
+                    .HasColumnName("ID")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("ID");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Content).HasColumnType("ntext");
             });
 
             modelBuilder.Entity<Menu>(entity =>
             {
-                entity.ToTable("Menu");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Link).HasMaxLength(250);
@@ -315,8 +277,6 @@ namespace WebBanDoDienTu.Models
 
             modelBuilder.Entity<MenuType>(entity =>
             {
-                entity.ToTable("MenuType");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Name).HasMaxLength(50);
@@ -324,8 +284,6 @@ namespace WebBanDoDienTu.Models
 
             modelBuilder.Entity<Product>(entity =>
             {
-                entity.ToTable("Product");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
@@ -352,7 +310,7 @@ namespace WebBanDoDienTu.Models
 
                 entity.Property(e => e.MetaDescriptions)
                     .HasMaxLength(250)
-                    .IsFixedLength(true);
+                    .IsFixedLength();
 
                 entity.Property(e => e.MetaTile)
                     .HasMaxLength(250)
@@ -383,8 +341,6 @@ namespace WebBanDoDienTu.Models
 
             modelBuilder.Entity<ProductCategory>(entity =>
             {
-                entity.ToTable("ProductCategory");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.CreatedBy)
@@ -399,7 +355,7 @@ namespace WebBanDoDienTu.Models
 
                 entity.Property(e => e.MetaDescriptions)
                     .HasMaxLength(250)
-                    .IsFixedLength(true);
+                    .IsFixedLength();
 
                 entity.Property(e => e.MetaTile)
                     .HasMaxLength(250)
@@ -426,8 +382,6 @@ namespace WebBanDoDienTu.Models
 
             modelBuilder.Entity<Slide>(entity =>
             {
-                entity.ToTable("Slide");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.CreatedBy)
@@ -455,12 +409,10 @@ namespace WebBanDoDienTu.Models
 
             modelBuilder.Entity<Tag>(entity =>
             {
-                entity.ToTable("Tag");
-
                 entity.Property(e => e.Id)
+                    .HasColumnName("ID")
                     .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("ID");
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Name).HasMaxLength(50);
             });

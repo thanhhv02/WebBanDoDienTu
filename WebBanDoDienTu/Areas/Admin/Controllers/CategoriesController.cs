@@ -22,7 +22,7 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
         // GET: Admin/Categories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Categories.ToListAsync());
+            return View(await _context.Category.ToListAsync());
         }
 
         // GET: Admin/Categories/Details/5
@@ -33,7 +33,7 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories
+            var category = await _context.Category
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (category == null)
             {
@@ -73,7 +73,7 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories.FindAsync(id);
+            var category = await _context.Category.FindAsync(id);
             if (category == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories
+            var category = await _context.Category
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (category == null)
             {
@@ -139,15 +139,15 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            _context.Categories.Remove(category);
+            var category = await _context.Category.FindAsync(id);
+            _context.Category.Remove(category);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CategoryExists(long id)
         {
-            return _context.Categories.Any(e => e.Id == id);
+            return _context.Category.Any(e => e.Id == id);
         }
     }
 }

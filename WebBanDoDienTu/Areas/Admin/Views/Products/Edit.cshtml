@@ -1,4 +1,4 @@
-﻿@model WebBanDoDienTu.Models.Product
+﻿@model WebBanDoDienTu.Models.ProductViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -39,7 +39,19 @@
                 <label asp-for="Image" class="control-label"></label>
                 <input asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
+
+                @if (Model.ExistingImage != null)
+                {
+                    <br />
+            <label class="control-label">Ảnh hiện tại:</label> <img src="~/product_imgs/@Model.ExistingImage" class="img-thumbnail" height="80" width="80" asp-append-version="true" />
+
+                }
+
             </div>
+
+
+
+
             <div class="form-group">
                 <label asp-for="MoreImages" class="control-label"></label>
                 <input asp-for="MoreImages" class="form-control" />
@@ -137,5 +149,12 @@
 </div>
 
 @section Scripts {
+    <script>
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

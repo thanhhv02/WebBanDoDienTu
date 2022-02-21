@@ -1,4 +1,4 @@
-﻿
+﻿@model WebBanDoDienTu.Models.LoginModel
 @{
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_BanDoDienTuLayout.cshtml";
@@ -23,7 +23,7 @@
     </div>
     <!--breadcrumbs area end-->
 
-    <section class="account">
+    <section class="account" >
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -37,21 +37,32 @@
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                 <div class="account-content">
-                                    <form action="#">
+                                    <form asp-action="Login" asp-controller="Login" method="post" >
                                         <div class="single-acc-field">
-                                            <label for="email">Email</label>
-                                            <input type="email" id="email" placeholder="Enter your Email">
+                                            @if (ViewBag.loginSucces != null)
+                                            {
+
+                                                <p class="alert alert-success">@ViewBag.loginSucces</p>
+                                            }
+                                            @if (ViewBag.error != null)
+                                            {
+                                                <p class="alert alert-danger">@ViewBag.error</p>
+                                            }
+                                            <label asp-for="Email">Email</label>
+                                            <input asp-for="Email" type="email" id="email" placeholder="Enter your Email">
+
+
                                         </div>
                                         <div class="single-acc-field">
-                                            <label for="password">Password</label>
-                                            <input type="password" id="password" placeholder="Enter your password">
+                                            <label asp-for="Password">Password</label>
+                                            <input asp-for="Password" type="password" id="password" placeholder="Enter your password">
                                         </div>
-                                        <div class="single-acc-field boxes">
+                                        @*<div class="single-acc-field boxes">
                                             <input type="checkbox" id="checkbox">
                                             <label for="checkbox">Remember me</label>
-                                        </div>
+                                        </div>*@
                                         <div class="single-acc-field">
-                                            <button type="submit">Login Account</button>
+                                            <button asp-action="Login" type="submit">Login Account</button>
                                         </div>
                                         <a href="forget-password.html">Forget Password?</a>
                                         <a href="register.html">Not Account Yet?</a>

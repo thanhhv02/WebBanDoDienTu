@@ -1,32 +1,49 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
     Layout = "_BanDoDienTuLayout";
+    var product = (List<Product>)ViewData["product"];
+    var random = new Random();
 }
+}
+
 <!-- quang cao tren dau -->
 <!--slider area start-->
 <section class="slider_section d-flex align-items-center" data-bgimg=" /img/slider/slider3.jpg">
     <div class="slider_area owl-carousel">
-        <div class="single_slider d-flex align-items-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-md-6">
-                        <div class="slider_content">
-                            <h1>Next level of Drone</h1>
-                            <h2>Insane Quality for use</h2>
-                            <p>Special offer <span> 20% off </span> this week</p>
-                            <a class="button" href="product-details.html">Buy now</a>
+
+        @for (int i = 0; i < 3; i++)
+        {
+            <div class="single_slider d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-md-6">
+                            <div class="slider_content">
+                                @{
+                                    
+                                    int index = random.Next(product.Count);
+                                }
+                                <h1>@product[index].Name</h1>
+                                @*<h2>Insane Quality for use</h2>*@
+
+                                @if (@product[index].PromotionPrice != null || @product[index].PromotionPrice != 0)
+                                {
+                                    <p>Special offer <span> @product[index].PromotionPrice off </span> this week</p>
+                                }
+                                <a class="button" href="product-details.html">Buy now</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xl-6 col-md-6">
-                        <div class="slider_content">
-                            <img src=" /img/product/1.png" alt="">
+                        <div class="col-xl-6 col-md-6">
+                            <div class="slider_content">
+                                <img src="~/product_imgs/@product[index].Image" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-        <div class="single_slider d-flex align-items-center">
+            </div>
+        }
+
+        @*<div class="single_slider d-flex align-items-center">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6 col-md-6">
@@ -63,13 +80,13 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
     </div>
 </section>
 <!--slider area end-->
 <!-- quang cao tren dau -->
 <!--Tranding product-->
-<section class="pt-60 pb-30 gray-bg">
+<!--<section class="pt-60 pb-30 gray-bg">
     <div class="container">
         <div class="row">
             <div class="col text-center">
@@ -138,10 +155,10 @@
             </div>
         </div>
     </div>
-</section>
+</section>-->
 <!--Tranding product-->
 <!--Features area-->
-<section class="features-area pt-60 pb-60">
+<!--<section class="features-area pt-60 pb-60">
     <div class="container">
         <div class="row">
             <div class="col text-center">
@@ -177,9 +194,9 @@
             </div>
         </div>
     </div>
-</section><!--Features area-->
+</section>--><!--Features area-->
 <!--Features area-->
-<section class="gray-bg pt-60 pb-60">
+<!--<section class="gray-bg pt-60 pb-60">
     <div class="container">
         <div class="row">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 order-lg-1 order-md-1 order-sm-1">
@@ -224,9 +241,9 @@
             </div>
         </div>
     </div>
-</section><!--Features area-->
+</section>--><!--Features area-->
 <!--product details start-->
-<div class="product_details mt-60 mb-60">
+<!--<div class="product_details mt-60 mb-60">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6">
@@ -332,10 +349,10 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 <!--product details end-->
 <!--area-->
-<section class="pt-60 pb-60 gray-bg">
+<!--<section class="pt-60 pb-60 gray-bg">
     <div class="container">
         <div class="row">
             <div class="col text-center">
@@ -351,9 +368,9 @@
             </div>
         </div>
     </div>
-</section><!--area-->
+</section>--><!--area-->
 <!--Other product-->
-<section class="pt-60 pb-30">
+<!--<section class="pt-60 pb-30">
     <div class="container">
         <div class="row">
             <div class="col text-center">
@@ -422,9 +439,9 @@
             </div>
         </div>
     </div>
-</section><!--Other product-->
+</section>--><!--Other product-->
 <!--Testimonials-->
-<section class="pb-60 pt-60 gray-bg">
+<!--<section class="pb-60 pt-60 gray-bg">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-10">
@@ -471,9 +488,9 @@
             </div>
         </div>
     </div>
-</section><!--/Testimonials-->
+</section>--><!--/Testimonials-->
 <!--Blog-->
-<section class="pt-60">
+<!--<section class="pt-60">
     <div class="container">
         <div class="row">
             <div class="col text-center">
@@ -551,7 +568,7 @@
             </div>
         </div>
     </div>
-</section><!--/Blog-->
+</section>--><!--/Blog-->
 <!--shipping area start-->
 <section class="shipping_area">
     <div class="container">

@@ -1,4 +1,4 @@
-﻿
+﻿@model WebBanDoDienTu.Models.Customers
 @{
     ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/_BanDoDienTuLayout.cshtml";
@@ -35,28 +35,55 @@
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                             <div class="account-content">
-                                <form action="#">
+                                <form asp-action="Register" asp-controller="Register" method="post">
+                                    @if (ViewBag.succesRegis != null)
+                                    {
+
+                                        <p class="alert alert-success">@ViewBag.succesRegis</p>
+                                    }
                                     <div class="single-acc-field">
-                                        <label for="name">Name</label>
-                                        <input type="text" id="name" placeholder="Enter Your Name">
+                                        <label asp-for="Name" for="name">Name</label>
+                                        <input asp-for="Name" type="text" id="name" placeholder="Enter Your Name">
                                     </div>
+                                    @if (ViewBag.nullename != null)
+                                    {
+
+                                        <p class="alert alert-danger">@ViewBag.nullename</p>
+                                    }
                                     <div class="single-acc-field">
                                         <label for="email">Email</label>
-                                        <input type="email" id="email" placeholder="Enter your Email">
+                                        <input asp-for="Email" type="email" id="email" placeholder="Enter your Email">
                                     </div>
+                                    @if (ViewBag.nullemail != null)
+                                    {
+
+                                        <p class="alert alert-danger">@ViewBag.nullemail</p>
+                                    }
+                                    @if (ViewBag.errorRegisEmail != null)
+                                    {
+
+                                        <p class="alert alert-danger">@ViewBag.errorRegisEmail</p>
+                                    }
                                     <div class="single-acc-field">
-                                        <label for="password">Password</label>
-                                        <input type="password" id="password" placeholder="At least 6 Charecter">
+                                        <label>Password</label>
+                                        <input asp-for="Password" type="password" id="password" placeholder="Enter your Password">
                                     </div>
-                                    <div class="single-acc-field boxes">
-                                        <input type="checkbox" id="checkbox">
-                                        <label for="checkbox">I'm not a robot</label>
-                                    </div>
+                                    @if (ViewBag.nullpassword != null)
+                                    {
+
+                                        <p class="alert alert-danger">@ViewBag.nullpassword</p>
+                                    }
+                                    @*<div class="single-acc-field boxes">
+            <input type="checkbox" id="checkbox">
+            <label for="checkbox">I'm not a robot</label>
+        </div>*@
                                     <div class="single-acc-field">
                                         <button type="submit">Register now</button>
                                     </div>
-                                    <a href="login.html">Already account? Login</a>
+                                    <a asp-action="Login" asp-controller="Login">Already account? Login</a>
+
                                 </form>
+                                
                             </div>
                         </div>
                     </div>

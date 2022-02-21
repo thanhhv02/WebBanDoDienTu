@@ -1,4 +1,4 @@
-﻿
+﻿@*@model WebBanDoDienTu.Models.Item*@
 @{
     ViewData["Title"] = "Cart";
     Layout = "_BanDoDienTuLayout";
@@ -9,45 +9,56 @@
         <form action="#">
             <div class="row">
                 <div class="col-12">
-                    <div class="table_desc">
-                        <div class="cart_page table-responsive">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th class="product_thumb">Image</th>
-                                        <th class="product_name">Product</th>
-                                        <th class="product-price">Price</th>
-                                        <th class="product_quantity">Quantity</th>
-                                        <th class="product_total">Total</th>
-                                        <th class="product_remove">Remove</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="product_thumb"><a href="#"><img src="assets/img/s-product/product.jpg" alt=""></a></td>
-                                        <td class="product_name"><a href="#">Handbag fringilla</a></td>
-                                        <td class="product-price">$65.00</td>
-                                        <td class="product_quantity"><label>Quantity</label> <input min="1" max="100" value="1" type="number"></td>
-                                        <td class="product_total">$130.00</td>
-                                        <td class="product_remove"><a href="#"><i class="ion-android-close"></i></a></td>
-                                    </tr>
+                 
+                        <div class="table_desc">
+                            <div class="cart_page table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="product_thumb">Image</th>
+                                            <th class="product_name">Product</th>
+                                            <th class="product-price">Price</th>
+                                            <th class="product_quantity">Quantity</th>
+                                            <th class="product_total">Total</th>
+                                            <th class="product_remove">Remove</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (ViewBag.cart != null)
+                                        {
+                                            @foreach (var item in ViewBag.cart)
+                                            {
+                                                <tr>
+                                                    <td class="product_thumb"><a href="#"><img src="~/product_imgs/@item.Product.Image" alt=""></a></td>
+                                                    <td class="product_name"><a>@item.Product.Name</a></td>
+                                                    <td class="product-price">@item.Product.Price</td>
+                                                    <td class="product_quantity"><label>Quantity</label> <input min="1" max="100" value="@item.Quantity" type="number"></td>
+                                                    <td class="product_total">@(item.Product.Price * @item.Quantity)</td>
+                                                    <td class="product_remove"><a asp-controller="cart" asp-action="Remove" asp-route-id="@item.Product.Id"><i class="ion-android-close"></i></a></td>
+                                                </tr>
+                                            }
+                                            }
 
-                                    <tr>
-                                        <td class="product_thumb"><a href="#"><img src="assets/img/s-product/product2.jpg" alt=""></a></td>
-                                        <td class="product_name"><a href="#">Handbags justo</a></td>
-                                        <td class="product-price">$90.00</td>
-                                        <td class="product_quantity"><label>Quantity</label> <input min="1" max="100" value="1" type="number"></td>
-                                        <td class="product_total">$180.00</td>
-                                        <td class="product_remove"><a href="#"><i class="ion-android-close"></i></a></td>
-                                    </tr>
 
-                                </tbody>
-                            </table>
+
+                                        @*<tr>
+            <td class="product_thumb"><a href="#"><img src="assets/img/s-product/product2.jpg" alt=""></a></td>
+            <td class="product_name"><a href="#">Handbags justo</a></td>
+            <td class="product-price">$90.00</td>
+            <td class="product_quantity"><label>Quantity</label> <input min="1" max="100" value="1" type="number"></td>
+            <td class="product_total">$180.00</td>
+            <td class="product_remove"><a href="#"><i class="ion-android-close"></i></a></td>
+        </tr>*@
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="cart_submit">
+                                <button type="submit">update cart</button>
+                            </div>
                         </div>
-                        <div class="cart_submit">
-                            <button type="submit">update cart</button>
-                        </div>
-                    </div>
+                    
+
                 </div>
             </div>
             <!--coupon code area start-->

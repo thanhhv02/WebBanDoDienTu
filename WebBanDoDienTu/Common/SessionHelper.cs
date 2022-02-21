@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebBanDoDienTu.Common
 {
-    public static class  SessionExtensions
+    public static class  SessionHelper
     {
         public static T GetComplexData<T>(this ISession session, string key)
         {
@@ -22,5 +22,14 @@ namespace WebBanDoDienTu.Common
         {
             session.SetString(key, JsonConvert.SerializeObject(value));
         }
+        //public static void SetOjectAsJson(this ISession session,string key,object value)
+        //{
+        //    session.SetString(key, JsonConvert.SerializeObject(value));
+        //}
+        //public static T GetOjectFromJson<T>(this ISession session, string key)
+        //{
+        //    var value = session.GetString(key);
+        //    return value == null ? default(T) : JsonConvert.DeserializeObject<T>(value);
+        //}
     }
 }

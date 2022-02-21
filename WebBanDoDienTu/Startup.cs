@@ -10,8 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebBanDoDienTu.Areas.Identity.Data;
-using WebBanDoDienTu.Data;
+
 using WebBanDoDienTu.Models;
 
 namespace WebBanDoDienTu
@@ -30,16 +29,16 @@ namespace WebBanDoDienTu
         {
             var connection = Configuration.GetConnectionString("Connection");
             services.AddDbContext<BANDODIENTUContext>(options => options.UseSqlServer(connection));
-            var connectionIdentity = Configuration.GetConnectionString("Connection");
-            services.AddDbContext<WebBanDoDienTuContext>(options => options.UseSqlServer(connection));
+            //var connectionIdentity = Configuration.GetConnectionString("Connection");
+            //services.AddDbContext<WebBanDoDienTuContext>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews();
             //services.AddIdentity
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(1);
             });
-            services.AddIdentity<WebBanDoDienTuUser, IdentityRole>().AddDefaultUI()
-                .AddEntityFrameworkStores<WebBanDoDienTuContext>().AddDefaultTokenProviders();
+            //    services.AddIdentity<WebBanDoDienTuUser, IdentityRole>().AddDefaultUI()
+            //        .AddEntityFrameworkStores<WebBanDoDienTuContext>().AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,6 +72,8 @@ namespace WebBanDoDienTu
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                //endpoints.MapRazorPages(); //Routes for pages
+                //endpoints.MapControllers(); //Routes for my API controllers
             });
 
         }
