@@ -21,8 +21,30 @@ namespace WebBanDoDienTu.Controllers
         // GET: RegisterController
         public ActionResult Register()
         {
+            if (SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart") != null)
+            {
+                ViewBag.cartCount = Count();
+                var cart = SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart");
+                ViewBag.cart = cart;
+                ViewBag.total = cart.Sum(item => item.Product.Price * item.Quantity);
+
+            }
             ViewData["Email"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Email");
+            ViewData["Role"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Role");
+            ProductModel productModel = new ProductModel();
+            ViewData["product"] = productModel.FindAll();
+            ViewBag.userid = SessionHelper.GetComplexData<int>(HttpContext.Session, "UserID");
             return View();
+        }
+        public int Count()
+        {
+            List<Item> cart = SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart");
+            int count = 0;
+            for (int i = 0; i < cart.Count; i++)
+            {
+                count++;
+            }
+            return count;
         }
         [HttpPost]
         public ActionResult Register(string name, string email, string password)

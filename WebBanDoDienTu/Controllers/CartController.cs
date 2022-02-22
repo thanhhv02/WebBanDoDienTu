@@ -24,6 +24,7 @@ namespace WebBanDoDienTu.Controllers
                     ViewBag.cartCount = Count();
                     var cart = SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart");
                     ViewBag.cart = cart;
+                    ViewBag.total = cart.Sum(item => item.Product.Price * item.Quantity);
                 }
                 ProductModel productModel = new ProductModel();
                 ViewData["product"] = productModel.FindAll();

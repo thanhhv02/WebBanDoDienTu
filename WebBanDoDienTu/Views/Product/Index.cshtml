@@ -45,9 +45,11 @@
                     <div class="product-content">
                         <h3 class="title"><a href="#">@item.Name</a></h3>
                         <div class="price">
-                            $16.00
-                            <span>$20.00</span>
+                            @string.Format("{0:0,0,00}", @item.Price) đ
+                            @*<span>$20.00</span>*@
                         </div>
+                        <a class="add-to-cart" asp-action="Details" asp-controller="Product" asp-route-id="@item.Id">+ View Details</a>
+
                         <a class="add-to-cart" asp-action="AddItem" asp-controller="Cart" asp-route-id="@item.Id">+ Add To Cart</a>
                     </div>
                 </div>

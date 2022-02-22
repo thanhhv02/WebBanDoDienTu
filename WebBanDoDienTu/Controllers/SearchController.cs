@@ -21,9 +21,9 @@ namespace WebBanDoDienTu.Controllers
         public ActionResult Search(string name)
         {
             ProductModel productModel = new ProductModel();
-            var id = _db.Product.Where(s => s.Name.Equals(name)).Select(s => s.Id).ToString();
-            ViewData["productSearch"] = productModel.Find(Int64.Parse(id));
-            return View();
+            var productList = _db.Product.Select(s => s.Name.Equals(name)).ToList();
+            ViewData["productSearch"] = productList;
+            return View(productList);
         }
 
         // GET: SearchController/Details/5

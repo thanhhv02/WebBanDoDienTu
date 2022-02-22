@@ -58,9 +58,13 @@
                         </div>
 
                         <div class="middel_right_info">
-                            <div class="header_wishlist">
-                                <a href="wishlist.html"><img src=" /img/user.png" alt=""></a>
-                            </div>
+                            @if (ViewData["Email"] != null)
+                            {
+                                <div class="header_wishlist">
+                                    <a href="wishlist.html"><img src=" /img/user.png" alt=""></a>
+                                </div>
+                            }
+
                             <div class="mini_cart_wrapper">
                                 <a asp-controller="cart" asp-action="index"><img src=" /img/shopping-bag.png" alt=""></a>
                                 @if (@ViewBag.cartCount == null)
@@ -91,7 +95,7 @@
                                                     @(sum += item.Product.Price * @item.Quantity)
                                                 </div>
                                                 <div class="cart_remove">
-                                                    <a href="#"><i class="ion-android-close"></i></a>
+                                                    <a asp-controller="cart" asp-action="Remove" asp-route-id="@item.Product.Id"><i class="ion-android-close"></i></a>
                                                 </div>
                                             </div>
 
@@ -130,7 +134,7 @@
                                         <li><a asp-action="index" asp-controller="_404">privacy policy</a></li>
                                         <li><a asp-action="index" asp-controller="_404">Frequently Questions</a></li>
                                         @*<li><a href="login.html">login</a></li>
-                                        <li><a href="register.html">register</a></li>*@
+                                            <li><a href="register.html">register</a></li>*@
                                         <li><a asp-action="index" asp-controller="_404">Forget Password</a></li>
                                         <li>@*<a asp-action="index" asp-controller="404">Error 404</a>*@</li>
                                         <li><a href="cart.html">cart</a></li>
@@ -142,8 +146,8 @@
                                     <a href="#">blog</a>
                                     <ul class="sub-menu">
 
-                                            <li><a asp-action="index" asp-controller="_404">blog</a></li>
-                                            <li><a asp-action="index" asp-controller="_404">blog details</a></li>
+                                        <li><a asp-action="index" asp-controller="_404">blog</a></li>
+                                        <li><a asp-action="index" asp-controller="_404">blog details</a></li>
 
                                     </ul>
                                 </li>
@@ -181,7 +185,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-md-6">
                             <div class="support_info">
-                                <p>Email: <a href="mailto:">support@drophunt.com</a></p>
+                                <p>Support Email: <a href="mailto:">hovanthanh12102002@gmail.com</a></p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
@@ -192,15 +196,15 @@
                                         if (ViewData["Email"] != null && ViewData["Role"] != null && ViewData["Role"].ToString() == "false")
                                         {
 
-                                            <li><a asp-area="Admin" asp-action="Index">Admin</a></li>
-                                            <li><a asp-route-id="@ViewBag.userid" asp-action="Details" asp-controller="Login">@ViewData["Email"].ToString().ToLower()</a></li>
+                                            <li><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+                                            <li><a asp-route-id="@ViewBag.userid" asp-action="Details" asp-controller="Home">@ViewData["Email"].ToString().ToLower()</a></li>
 
                                             <li><a asp-action="Logout" asp-controller="Login">Logout</a></li>
 
                                         }
                                         else if (ViewData["Email"] != null)
                                         {
-                                            <li><a asp-route-id="@ViewBag.userid" asp-action="Details" asp-controller="Login">@ViewData["Email"].ToString().ToLower()</a></li>
+                                            <li><a asp-route-id="@ViewBag.userid" asp-action="Details" asp-controller="Home">@ViewData["Email"].ToString().ToLower()</a></li>
 
                                             <li><a asp-action="Logout" asp-controller="Login">Logout</a></li>
                                         }
@@ -232,15 +236,19 @@
                                 <div class="search_container">
                                     <form asp-action="Search" asp-controller="Search" method="post">
                                         <div class="search_box">
-                                            <input placeholder="Search product..." type="text">
+                                            <input placeholder="Search product..." type="text" >
                                             <button type="submit">Search</button>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="middel_right_info">
-                                    <div class="header_wishlist">
-                                        <a href="#"><img src=" /img/user.png" alt=""></a>
-                                    </div>
+                                    @if (ViewData["Email"] != null)
+                                    {
+                                        <div class="header_wishlist">
+                                            <a href="#"><img src=" /img/user.png" alt=""></a>
+                                        </div>
+                                    }
+
                                     <div class="mini_cart_wrapper">
                                         <a asp-controller="cart" asp-action="index"><img src=" /img/shopping-bag.png" alt=""></a>
                                         @if (@ViewBag.cartCount == null)
@@ -254,42 +262,43 @@
                                         @if (ViewBag.cart != null)
                                         {
                                             int sum = 0;
-                                    <div class="mini_cart">
+                                            <div class="mini_cart">
 
-                                        @foreach (var item in ViewBag.cart)
-                                        {
+                                                @foreach (var item in ViewBag.cart)
+                                                {
 
-                                            <!--mini cart-->
+                                                    <!--mini cart-->
 
-                                            <div class="cart_item">
-                                                <div class="cart_img">
-                                                    <a href="#"><img src="~/product_imgs/@item.Product.Image" alt=""></a>
-                                                </div>
-                                                <div class="cart_info">
-                                                    <a href="#">@item.Product.Name</a>
-                                                    <p>Qty: @item.Quantity X <span> @item.Product.Price </span></p>
-                                                    @(sum += item.Product.Price * @item.Quantity)
-                                                </div>
-                                                <div class="cart_remove">
-                                                    <a href="#"><i class="ion-android-close"></i></a>
+                                                    <div class="cart_item">
+                                                        <div class="cart_img">
+                                                            <a href="#"><img src="~/product_imgs/@item.Product.Image" alt=""></a>
+                                                        </div>
+                                                        <div class="cart_info">
+                                                            <a href="#">@item.Product.Name</a>
+                                                            <p>Qty: @item.Quantity X <span> @item.Product.Price </span></p>
+                                                            @(sum += item.Product.Price * @item.Quantity)
+                                                        </div>
+                                                        <div class="cart_remove">
+                                                            <a asp-controller="cart" asp-action="Remove" asp-route-id="@item.Product.Id"><i class="ion-android-close"></i></a>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--mini cart end-->
+                                                }
+                                                <div class="mini_cart_table">
+                                                    @*<div class="cart_total">
+                            <span>Sub total:</span>
+                            <span class="price">@sum</span>
+                        </div>*@
+                                                    <div class="cart_total mt-10">
+                                                        <span>total:</span>
+                                                        <span class="price">$@ViewBag.total</span>
+                                                    </div>
+                                                </div><div class="mini_cart_footer">
+                                                    <div class="cart_button"><a asp-action="Index" asp-controller="Cart">View cart</a></div>
+                                                    <div class="cart_button"><a href="checkout.html">Checkout</a></div>
                                                 </div>
                                             </div>
-
-                                            <!--mini cart end-->
-                                        }
-                                        <div class="mini_cart_table">
-                                            <div class="cart_total">
-                                                <span>Sub total:</span>
-                                                <span class="price">@sum</span>
-                                            </div><div class="cart_total mt-10">
-                                                <span>total:</span>
-                                                <span class="price">$138.00</span>
-                                            </div>
-                                        </div><div class="mini_cart_footer">
-                                            <div class="cart_button"><a asp-action="Index" asp-controller="Cart">View cart</a></div>
-                                            <div class="cart_button"><a href="checkout.html">Checkout</a></div>
-                                        </div>
-                                    </div>
                                         }
 
                                     </div>
@@ -311,17 +320,17 @@
                                         <li><a asp-controller="Home" asp-action="Index">home</a></li>
                                         <li><a asp-controller="Product" asp-action="Index">Product</a></li>
 
-                                        <li>
+                                        <!--<li>
                                             <a class="active" href="#">pages <i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">
                                                 <li><a asp-action="index" asp-controller="_404">About Us</a></li>
                                                 <li><a asp-action="index" asp-controller="_404">contact</a></li>
                                                 <li><a asp-action="index" asp-controller="_404">privacy policy</a></li>
-                                                <li><a asp-action="index" asp-controller="_404">Frequently Questions</a></li>
+                                                <li><a asp-action="index" asp-controller="_404">Frequently Questions</a></li>-->
                                                 @*<li><a href="login.html">login</a></li>
-                                                <li><a href="register.html">register</a></li>*@
-                                                <li><a asp-action="index" asp-controller="_404">Forget Password</a></li>
-                                                <li>@*<a asp-action="index" asp-controller="404">Error 404</a>*@</li>
+                                                    <li><a href="register.html">register</a></li>*@
+                                                <!--<li><a asp-action="index" asp-controller="_404">Forget Password</a></li>
+                                                <li>-->@*<a asp-action="index" asp-controller="404">Error 404</a>*@<!--</li>
                                                 <li><a href="cart.html">cart</a></li>
                                                 <li><a asp-action="index" asp-controller="_404">tracking</a></li>
                                                 <li><a asp-action="index" asp-controller="_404">checkout</a></li>
@@ -333,7 +342,7 @@
                                                 <li><a asp-action="index" asp-controller="_404">blog</a></li>
                                                 <li><a asp-action="index" asp-controller="_404">blog details</a></li>
                                             </ul>
-                                        </li>
+                                        </li>-->
                                         <li><a asp-action="index" asp-controller="_404"> Contact Us</a></li>
                                     </ul>
                                 </nav>
@@ -450,7 +459,7 @@
     <!-- Main JS -->
     <script src=" /js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+    @RenderSection("scripts", required: false)
 </body>
 
 <!--   03:22:07 GMT -->
