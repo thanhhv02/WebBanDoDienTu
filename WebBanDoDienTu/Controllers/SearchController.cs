@@ -17,19 +17,7 @@ namespace WebBanDoDienTu.Controllers
         public ActionResult Index()
         {
 
-            if (SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart") != null)
-            {
-                ViewBag.cartCount = Count();
-                var cart = SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart");
-                ViewBag.cart = cart;
-                ViewBag.total = cart.Sum(item => item.Product.Price * item.Quantity);
-
-            }
-            ViewData["Email"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Email");
-            ViewData["Role"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Role");
-            ProductModel productModel = new ProductModel();
-            ViewData["product"] = productModel.FindAll();
-            ViewBag.userid = SessionHelper.GetComplexData<int>(HttpContext.Session, "UserID");
+            
             return View();
         }
         public int Count()
@@ -45,6 +33,19 @@ namespace WebBanDoDienTu.Controllers
         [HttpGet]
         public IActionResult Search(string searchString)
         {
+            if (SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart") != null)
+            {
+                ViewBag.cartCount = Count();
+                var cart = SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart");
+                ViewBag.cart = cart;
+                ViewBag.total = cart.Sum(item => item.Product.Price * item.Quantity);
+
+            }
+            ViewData["Email"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Email");
+            ViewData["Role"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Role");
+            ProductModel productModel = new ProductModel();
+            ViewData["product"] = productModel.FindAll();
+            ViewBag.userid = SessionHelper.GetComplexData<int>(HttpContext.Session, "UserID");
             return View(_db.Product.Where(x=>x.Name.Contains(searchString)).ToList());
         }
         // GET: SearchController/Details/5

@@ -28,7 +28,7 @@
     <div class="off_canvars_overlay">
 
     </div>
-    <div class="Offcanvas_menu">
+    <div class="Offcanvas_menu" style=" position: fixed; top: 0;">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -190,7 +190,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="top_right text-right">
-                                <ul>
+                                <ul> 
 
                                     @{
                                         if (ViewData["Email"] != null && ViewData["Role"] != null && ViewData["Role"].ToString() == "false")
