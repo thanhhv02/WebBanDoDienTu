@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebBanDoDienTu.Common;
 using WebBanDoDienTu.Models;
 
 namespace WebBanDoDienTu.Controllers
@@ -14,18 +16,37 @@ namespace WebBanDoDienTu.Controllers
         // GET: SearchController
         public ActionResult Index()
         {
-           
+
+            if (SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart") != null)
+            {
+                ViewBag.cartCount = Count();
+                var cart = SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart");
+                ViewBag.cart = cart;
+                ViewBag.total = cart.Sum(item => item.Product.Price * item.Quantity);
+
+            }
+            ViewData["Email"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Email");
+            ViewData["Role"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Role");
+            ProductModel productModel = new ProductModel();
+            ViewData["product"] = productModel.FindAll();
+            ViewBag.userid = SessionHelper.GetComplexData<int>(HttpContext.Session, "UserID");
             return View();
         }
-        [HttpPost]
-        public ActionResult Search(string name)
+        public int Count()
         {
-            ProductModel productModel = new ProductModel();
-            var productList = _db.Product.Select(s => s.Name.Equals(name)).ToList();
-            ViewData["productSearch"] = productList;
-            return View(productList);
+            List<Item> cart = SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart");
+            int count = 0;
+            for (int i = 0; i < cart.Count; i++)
+            {
+                count++;
+            }
+            return count;
         }
-
+        [HttpGet]
+        public IActionResult Search(string searchString)
+        {
+            return View(_db.Product.Where(x=>x.Name.Contains(searchString)).ToList());
+        }
         // GET: SearchController/Details/5
         public ActionResult Details(int id)
         {

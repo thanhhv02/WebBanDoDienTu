@@ -24,7 +24,7 @@
                             <img class="pic-2" src="~/product_imgs/@item.Image" style="width:300px;height:330px">
                         </a>
                         <ul class="social">
-                            <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                            <li><a  asp-action="Details" asp-controller="Product" asp-route-id="@item.Id" data-tip="View Details"><i class="fa fa-search"></i></a></li>
                             <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                             <li><a asp-action="AddItem" asp-controller="Cart" asp-route-id="@item.Id" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
@@ -45,11 +45,11 @@
                     <div class="product-content">
                         <h3 class="title"><a href="#">@item.Name</a></h3>
                         <div class="price">
-                            @string.Format("{0:0,0,00}", @item.Price) đ
+                            @string.Format("{0:0,0,00}", @item.Price)đ
                             @*<span>$20.00</span>*@
                         </div>
                         <a class="add-to-cart" asp-action="Details" asp-controller="Product" asp-route-id="@item.Id">+ View Details</a>
-
+                        <br />
                         <a class="add-to-cart" asp-action="AddItem" asp-controller="Cart" asp-route-id="@item.Id">+ Add To Cart</a>
                     </div>
                 </div>
@@ -60,7 +60,6 @@
 </div>
 <hr>
 
-            }
 <!--product details start-->
 @*<div class="product_details mt-60 mb-60">
         <div class="container">

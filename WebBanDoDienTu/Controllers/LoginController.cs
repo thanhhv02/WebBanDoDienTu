@@ -71,7 +71,7 @@ namespace WebBanDoDienTu.Controllers
                 }
                 else
                 {
-                    ViewBag.error = "Login failed";
+                    ViewBag.errorLog = "Login failed";
                     return RedirectToAction("Login");
                 }
             }

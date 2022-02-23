@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,14 +47,29 @@ namespace WebBanDoDienTu.Controllers
             }
             return count;
         }
-        [Route("buy/{id}")]
-        public ActionResult AddItem(long id)
+        [HttpPost]
+        public IActionResult Update(IFormCollection fc)
         {
+            StringValues quantites;
+            fc.TryGetValue("quantity", out quantites);
+            List<Item> cart = SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart");
+            for (int i = 0; i < cart.Count; i++)
+            {
+                cart[i].Quantity = Convert.ToInt32(quantites[i]);
+            }
+            SessionHelper.SetComplexData(HttpContext.Session, "cart", cart);
+
+            return RedirectToAction("Index");
+        }
+        [Route("buy/{id}")]
+        public ActionResult AddItem(long id, string quantity)
+        {
+            string quantityTmp = quantity != null ? quantity : "1";
             ProductModel productModel = new ProductModel();
             if (SessionHelper.GetComplexData<List<Item>>(HttpContext.Session,"cart")==null)
             {
                 List<Item> cart = new List<Item>();
-                cart.Add(new Item { Product = productModel.Find(id), Quantity = 1});
+                cart.Add(new Item { Product = productModel.Find(id), Quantity = Convert.ToInt32(quantityTmp) });
                 SessionHelper.SetComplexData(HttpContext.Session, "cart", cart);
             }
             else
@@ -62,11 +78,11 @@ namespace WebBanDoDienTu.Controllers
                 int index = isExist(id);
                 if(index != -1)
                 {
-                    cart[index].Quantity += 1;
+                    cart[index].Quantity += Convert.ToInt32(quantityTmp);
                 }
                 else
                 {
-                    cart.Add(new Item { Product = productModel.Find(id), Quantity = 1 });
+                    cart.Add(new Item { Product = productModel.Find(id), Quantity = Convert.ToInt32(quantityTmp)});
                 }
                 SessionHelper.SetComplexData(HttpContext.Session, "cart", cart);
             }

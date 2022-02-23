@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using WebBanDoDienTu.Common;
 using WebBanDoDienTu.Models;
 
 namespace WebBanDoDienTu.Areas.Admin.Controllers
@@ -22,7 +23,16 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
         // GET: Admin/Customers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Customers.ToListAsync());
+
+            ViewData["Email"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Email");
+            ViewData["Role"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Role");
+            ViewBag.userid = SessionHelper.GetComplexData<int>(HttpContext.Session, "UserID");
+            if (ViewData["Email"] != null && ViewData["Role"].ToString() == "false")
+            {
+                return View(await _context.Customers.ToListAsync());
+            }
+            return NotFound();
+            
         }
 
         // GET: Admin/Customers/Details/5
@@ -39,8 +49,11 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
-            return View(customers);
+            if (ViewData["Email"] != null && ViewData["Role"].ToString() == "false")
+            {
+                return View(customers);
+            }
+            return NotFound();
         }
 
         // GET: Admin/Customers/Create
@@ -62,7 +75,11 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(customers);
+            if (ViewData["Email"] != null && ViewData["Role"].ToString() == "false")
+            {
+                return View(customers);
+            }
+            return NotFound();
         }
 
         // GET: Admin/Customers/Edit/5

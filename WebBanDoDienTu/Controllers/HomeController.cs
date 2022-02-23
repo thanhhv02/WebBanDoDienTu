@@ -51,6 +51,7 @@ namespace WebBanDoDienTu.Controllers
             }
             return count;
         }
+        [HttpGet]
         public async Task<IActionResult> Details(long? id)
         {
             if (id == null)
@@ -63,7 +64,16 @@ namespace WebBanDoDienTu.Controllers
             {
                 return NotFound();
             }
-            return View(customers);
+            var cus = new Customers()
+            {
+                Id = customers.Id,
+                UserName = customers.UserName,
+                Name = customers.Name,
+                Address = customers.Address,
+                Phone = customers.Phone,
+                Email = customers.Email
+            };
+            return View(cus);
         }
 
         // POST: Admin/Customers/Edit/5
@@ -71,7 +81,7 @@ namespace WebBanDoDienTu.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Details(long id, [Bind("Id,UserName,Name,Address,Email,Phone")] Customers customers)
+        public async Task<IActionResult> Details(long id, [Bind("Id,UserName,Name,Address,Phone")] Customers customers)
         {
             if (id != customers.Id)
             {
@@ -84,11 +94,10 @@ namespace WebBanDoDienTu.Controllers
                 cus.Name = customers.Name;
                 cus.UserName = customers.UserName;
                 cus.Address = customers.Address;
-                cus.Email = customers.Email;
                 cus.Phone = customers.Phone;
                 try
                 {
-                    _context.Update(customers);
+                    _context.Update(cus);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -102,9 +111,9 @@ namespace WebBanDoDienTu.Controllers
                         throw;
                     }
                 }
-                //return View(customers);
+                return RedirectToAction(nameof(Details));
             }
-            return View(customers);
+            return RedirectToAction("Details");
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

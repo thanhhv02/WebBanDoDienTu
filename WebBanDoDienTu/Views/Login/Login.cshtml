@@ -44,7 +44,7 @@
 
                                                 <p class="alert alert-success">@ViewBag.loginSucces</p>
                                             }
-                                            @if (ViewBag.error != null)
+                                            @if (ViewBag.errorLog != null)
                                             {
                                                 <p class="alert alert-danger">@ViewBag.error</p>
                                             }
@@ -65,7 +65,7 @@
                                             <button asp-action="Login" type="submit">Login Account</button>
                                         </div>
                                         <a href="forget-password.html">Forget Password?</a>
-                                        <a href="register.html">Not Account Yet?</a>
+                                        <a asp-controller="Register" asp-action="Register">Not Account Yet?</a>
                                     </form>
                                     
                                 </div>

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using WebBanDoDienTu.Common;
 using WebBanDoDienTu.Models;
 
 namespace WebBanDoDienTu.Areas.Admin.Controllers
@@ -22,7 +23,16 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
         // GET: Admin/Categories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Category.ToListAsync());
+
+            ViewData["Email"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Email");
+            ViewData["Role"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Role");
+            ViewBag.userid = SessionHelper.GetComplexData<int>(HttpContext.Session, "UserID");
+            if (ViewData["Email"] != null && ViewData["Role"].ToString() == "false")
+            {
+                 return View(await _context.Category.ToListAsync());
+            }
+            return NotFound();
+           
         }
 
         // GET: Admin/Categories/Details/5

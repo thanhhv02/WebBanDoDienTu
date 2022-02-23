@@ -49,9 +49,9 @@
                             </ul>
                         </div>
                         <div class="search_container">
-                            <form asp-action="Search" asp-controller="Search" method="post">
+                            <form asp-action="Search" asp-controller="Search" method="get">
                                 <div class="search_box">
-                                    <input placeholder="Search product..." type="text">
+                                    <input placeholder="Search product..." type="text" name="searchString">
                                     <button type="submit">Search</button>
                                 </div>
                             </form>
@@ -91,8 +91,8 @@
                                                 </div>
                                                 <div class="cart_info">
                                                     <a href="#">@item.Product.Name</a>
-                                                    <p>Qty: @item.Quantity X <span> @item.Product.Price </span></p>
-                                                    @(sum += item.Product.Price * @item.Quantity)
+                                                    <p>Qty: @item.Quantity X <span> @string.Format("{0:0,0,00}", @item.Product.Price)</span></p>
+                                                    @string.Format("{0:0,0,00}", (item.Product.Price * item.Quantity))đ
                                                 </div>
                                                 <div class="cart_remove">
                                                     <a asp-controller="cart" asp-action="Remove" asp-route-id="@item.Product.Id"><i class="ion-android-close"></i></a>
@@ -104,7 +104,7 @@
                                         <div class="mini_cart_table">
                                             <div class="cart_total">
                                                 <span>Sub total:</span>
-                                                <span class="price">@sum</span>
+                                                <span class="price"> @string.Format("{0:0,0,00}", @ViewBag.total)</span>
                                             </div><div class="cart_total mt-10">
                                                 <span>total:</span>
                                                 <span class="price">$138.00</span>
@@ -178,7 +178,7 @@
     <!--Offcanvas menu area end-->
 
     <header>
-        <div class="main_header">
+        <div class="main_header" id="navbar-example2" >
             <!--header top start-->
             <div class="header_top">
                 <div class="container">
@@ -197,14 +197,14 @@
                                         {
 
                                             <li><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
-                                            <li><a asp-route-id="@ViewBag.userid" asp-action="Details" asp-controller="Home">@ViewData["Email"].ToString().ToLower()</a></li>
+                                            <li><a asp-route-id="@ViewBag.userid" asp-action="Details" asp-controller="Home">@ViewData["Email"]</a></li>
 
                                             <li><a asp-action="Logout" asp-controller="Login">Logout</a></li>
 
                                         }
                                         else if (ViewData["Email"] != null)
                                         {
-                                            <li><a asp-route-id="@ViewBag.userid" asp-action="Details" asp-controller="Home">@ViewData["Email"].ToString().ToLower()</a></li>
+                                            <li><a asp-route-id="@ViewBag.userid" asp-action="Details" asp-controller="Home">@ViewData["Email"]</a></li>
 
                                             <li><a asp-action="Logout" asp-controller="Login">Logout</a></li>
                                         }
@@ -228,15 +228,15 @@
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-6">
                             <div class="logo">
-                                <a href="index-2.html"><img src=" /img/logo/logo.png" alt=""></a>
+                                <a asp-controller="Home" asp-action="index"><img src=" /img/logo/logo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-6">
                             <div class="middel_right">
                                 <div class="search_container">
-                                    <form asp-action="Search" asp-controller="Search" method="post">
+                                    <form asp-action="Search" asp-controller="Search" method="get">
                                         <div class="search_box">
-                                            <input placeholder="Search product..." type="text" >
+                                            <input placeholder="Search product..." type="text" name="searchString">
                                             <button type="submit">Search</button>
                                         </div>
                                     </form>
@@ -245,7 +245,7 @@
                                     @if (ViewData["Email"] != null)
                                     {
                                         <div class="header_wishlist">
-                                            <a href="#"><img src=" /img/user.png" alt=""></a>
+                                            <a asp-action="details" asp-controller="home"><img src=" /img/user.png" alt=""></a>
                                         </div>
                                     }
 
@@ -275,8 +275,7 @@
                                                         </div>
                                                         <div class="cart_info">
                                                             <a href="#">@item.Product.Name</a>
-                                                            <p>Qty: @item.Quantity X <span> @item.Product.Price </span></p>
-                                                            @(sum += item.Product.Price * @item.Quantity)
+                                                            <p>Qty: @item.Quantity X <span>  @string.Format("{0:0,0,00}", @item.Product.Price)đ </span></p>
                                                         </div>
                                                         <div class="cart_remove">
                                                             <a asp-controller="cart" asp-action="Remove" asp-route-id="@item.Product.Id"><i class="ion-android-close"></i></a>
@@ -292,11 +291,11 @@
                         </div>*@
                                                     <div class="cart_total mt-10">
                                                         <span>total:</span>
-                                                        <span class="price">$@ViewBag.total</span>
+                                                        <span class="price"> @string.Format("{0:0,0,00}", @ViewBag.total)đ</span>
                                                     </div>
                                                 </div><div class="mini_cart_footer">
                                                     <div class="cart_button"><a asp-action="Index" asp-controller="Cart">View cart</a></div>
-                                                    <div class="cart_button"><a href="checkout.html">Checkout</a></div>
+                                                    <div class="cart_button">@*<a href="checkout.html">Checkout</a>*@</div>
                                                 </div>
                                             </div>
                                         }
@@ -355,8 +354,9 @@
         </div>
     </header>
     <!--header area end-->
-    @RenderBody()
-
+    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+        @RenderBody()
+    </div>
     <!--footer area start-->
     <footer class="footer_widgets">
         <div class="footer_top">

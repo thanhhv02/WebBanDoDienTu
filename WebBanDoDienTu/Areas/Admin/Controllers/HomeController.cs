@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebBanDoDienTu.Common;
 
 namespace WebBanDoDienTu.Areas.Admin.Controllers
 {
@@ -14,7 +15,16 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
         
         public ActionResult Index()
         {
-            return View();
+
+
+            ViewData["Email"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Email");
+            ViewData["Role"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Role");
+            ViewBag.userid = SessionHelper.GetComplexData<int>(HttpContext.Session, "UserID");
+            if(ViewData["Email"] != null && ViewData["Role"].ToString() == "false")
+            {
+                return View();
+            }
+            return NotFound();
         }
 
         // GET: HomeController/Details/5
