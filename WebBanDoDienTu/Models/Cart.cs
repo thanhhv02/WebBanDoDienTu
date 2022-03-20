@@ -10,7 +10,8 @@ namespace WebBanDoDienTu.Models
     public partial class Cart
     {
         public int Id { get; set; }
-        public long? ProductId { get; set; }
-        public int? Quantity { get; set; }
+        public string ProductInfo { get; set; }
+        public long UserId { get; set; }
+        public double? Total { get; set; }
     }
 }

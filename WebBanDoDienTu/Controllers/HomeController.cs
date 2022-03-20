@@ -54,6 +54,19 @@ namespace WebBanDoDienTu.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(long? id)
         {
+            if (SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart") != null)
+            {
+                ViewBag.cartCount = Count();
+                var cart = SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart");
+                ViewBag.cart = cart;
+                ViewBag.total = cart.Sum(item => item.Product.Price * item.Quantity);
+
+            }
+            ViewData["Email"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Email");
+            ViewData["Role"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Role");
+            ProductModel productModel = new ProductModel();
+            ViewData["product"] = productModel.FindAll();
+            ViewBag.userid = SessionHelper.GetComplexData<int>(HttpContext.Session, "UserID");
             if (id == null)
             {
                 return NotFound();

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,30 +18,39 @@ namespace WebBanDoDienTu.Controllers
         // GET: CartController
         public ActionResult Index()
         {
-            ViewData["Email"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Email");
-            if(ViewData["Email"] != null)
-            {
-                if (SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart") != null)
+                ViewData["Email"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Email");
+                if (ViewData["Email"] != null)
                 {
-                    ViewBag.cartCount = Count();
-                    var cart = SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart");
-                    ViewBag.cart = cart;
-                    ViewBag.total = cart.Sum(item => item.Product.Price * item.Quantity);
+                    
+                    ProductModel productModel = new ProductModel();
+                    ViewData["product"] = productModel.FindAll();
+                    ViewData["Role"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Role");
+                    if (SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart") != null)
+                    {
+
+                        var cart = SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart");
+                        ViewBag.cart = cart;
+                        ViewBag.total = cart.Sum(item => item.Product.Price * item.Quantity);
+                        ViewBag.cartCount = Count();
+                    }
                 }
-                ProductModel productModel = new ProductModel();
-                ViewData["product"] = productModel.FindAll();
-                ViewData["Role"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Role");
-            }
-            else
-            {
-                return RedirectToAction("Login", "Login");
-            }
+                else
+                {
+                    return RedirectToAction("Login", "Login");
+                }
+                return View();
+            
+            
+        }
+        public ActionResult Error()
+        {
             return View();
         }
         public int Count()
         {
             List<Item> cart = SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart");
             int count = 0;
+
             for (int i = 0; i < cart.Count; i++)
             {
                 count++;
@@ -60,6 +70,31 @@ namespace WebBanDoDienTu.Controllers
             SessionHelper.SetComplexData(HttpContext.Session, "cart", cart);
 
             return RedirectToAction("Index");
+        }
+        public ActionResult Purchase()
+        {
+            var cart2 = SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart");
+            var total2 = cart2.Sum(item => item.Product.Price * item.Quantity);
+            ViewBag.cart2 = cart2;
+            ViewData["Email"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Email");
+            if (ViewData["Email"] != null && ViewBag.cart2 !=null)
+            {
+                var IdOfUser = SessionHelper.GetComplexData<int>(HttpContext.Session, "UserID");
+                var cartSession = JsonConvert.SerializeObject(cart2);
+                
+
+                var cart = new Cart
+                {
+                    ProductInfo = cartSession,
+                    UserId = (long)IdOfUser,
+                    Total = (double)total2
+                };
+                _db.Cart.Add(cart);
+                _db.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return RedirectToAction("Index", "Home");
+
         }
         [Route("buy/{id}")]
         public ActionResult AddItem(long id, string quantity)
@@ -93,9 +128,18 @@ namespace WebBanDoDienTu.Controllers
         {
             List<Item> cart = SessionHelper.GetComplexData<List<Item>>(HttpContext.Session, "cart");
             int index = isExist(id);
-            cart.RemoveAt(index);
-            SessionHelper.SetComplexData(HttpContext.Session, "cart", cart);
-            return RedirectToAction("Index");
+            if(index != -1)
+            {
+                
+                cart.RemoveAt(index);
+                SessionHelper.SetComplexData(HttpContext.Session, "cart", cart);
+            }
+            else
+            {
+                SessionHelper.SetComplexData(HttpContext.Session, "cart", null);
+            }
+            
+            return RedirectToAction("Index","Cart");
         }
         private int isExist(long id)
         {

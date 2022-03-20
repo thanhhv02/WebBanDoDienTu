@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -17,7 +16,6 @@ namespace WebBanDoDienTu.Models
         public string Descriptions { get; set; }
         public string Image { get; set; }
         public string MoreImages { get; set; }
-        [DisplayFormat(DataFormatString = "{0:C0}")]
         public decimal? Price { get; set; }
         public decimal? PromotionPrice { get; set; }
         public bool? IncludedVat { get; set; }

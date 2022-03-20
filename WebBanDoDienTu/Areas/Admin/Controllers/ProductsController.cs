@@ -27,18 +27,8 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
         // GET: Admin/Products
         public async Task<IActionResult> Index()
         {
-
-            ViewData["Email"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Email");
-            ViewData["Role"] = SessionHelper.GetComplexData<string>(HttpContext.Session, "Role");
-            ViewBag.userid = SessionHelper.GetComplexData<int>(HttpContext.Session, "UserID");
-            if (ViewData["Email"] != null && ViewData["Role"].ToString() == "false")
-            {
                 return View(await _context.Product.ToListAsync());
-            }
-            return NotFound();
-            
         }
-
         // GET: Admin/Product/Details/5
         public async Task<IActionResult> Details(long? id)
         {

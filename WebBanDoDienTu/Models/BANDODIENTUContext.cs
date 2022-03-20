@@ -1,8 +1,6 @@
 ﻿using System;
-using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.Configuration;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -39,9 +37,6 @@ namespace WebBanDoDienTu.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsetting.json");
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
@@ -94,7 +89,9 @@ namespace WebBanDoDienTu.Models
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.ProductId).HasColumnName("ProductID");
+                entity.Property(e => e.ProductInfo)
+                    .HasMaxLength(2046)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Category>(entity =>
